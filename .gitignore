@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Working / source files — not part of the deployed site
+.impeccable/
+design/
+images/_source/
+mockup-service-cards.html
+Jeannine Insurance Logos copy/
+Jeannine Logos  copy/
+*.docx
+CLINICAL-SUPERVISION-BUILD-NOTES.md
