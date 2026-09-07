@@ -168,7 +168,8 @@
       background-size:cover; background-position:center; }
     /* Overlay: #F2EDF0 at 70%. NOTE: if a real photo is busy/dark behind the
        text, raise this opacity for AA contrast on the dark text. */
-    .hero .overlay{ position:absolute; inset:0; z-index:1; background:rgba(242,237,240,.70); }
+    .hero .overlay{ position:absolute; inset:0; z-index:1;
+      background:linear-gradient(180deg, rgba(242,237,240,.28) 0%, rgba(242,237,240,.42) 45%, rgba(242,237,240,.88) 100%); }
     /* Extra top padding opens up space below the fixed nav/logo before the headline;
        bottom padding keeps the tall banner balanced. */
     .hero .inner{ position:relative; z-index:2; width:100%; max-width:var(--maxw); margin:0 auto;
