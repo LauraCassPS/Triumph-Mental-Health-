@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy | Triumph Mental Health Counseling</title>
+  <meta name="description" content="How Triumph Mental Health Counseling collects, uses, and protects information on this website. No tracking cookies, advertising tools, or analytics that identify you.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.triumphmentalhealth.com/privacy">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Fonts are self-hosted (see @font-face). No third-party font requests. -->
+  <link rel="preload" href="/fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    /* ---------- Self-hosted fonts (no third-party requests; latin woff2) ---------- */
+    @font-face{ font-family:'Cormorant Garamond'; font-style:normal; font-weight:400 500;
+      font-display:swap; src:url('/fonts/cormorant-garamond.woff2') format('woff2'); }
+    @font-face{ font-family:'Cormorant Garamond'; font-style:italic; font-weight:500;
+      font-display:swap; src:url('/fonts/cormorant-garamond-italic.woff2') format('woff2'); }
+    @font-face{ font-family:'Source Sans 3'; font-style:normal; font-weight:400 700;
+      font-display:swap; src:url('/fonts/source-sans-3.woff2') format('woff2'); }
+    @font-face{ font-family:'Raleway'; font-style:normal; font-weight:400 700;
+      font-display:swap; src:url('/fonts/raleway.woff2') format('woff2'); }
+
+    :root{
+      --plum:#2F0828; --plum2:#5A3550; --mauve:#7D5397; --mauve-ink:#6A4084;
+      --coral:#F47A82; --rose-ink:#B4384F; --rose:#F3EEF0; --paper:#FBF8F9;
+      --line:rgba(47,8,40,.14); --maxw:1120px;
+    }
+    *{ box-sizing:border-box; }
+    html{ -webkit-text-size-adjust:100%; }
+    body{ margin:0; background:var(--paper); color:var(--plum);
+      font-family:'Source Sans 3',-apple-system,system-ui,Segoe UI,sans-serif;
+      font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+    h1,h2{ font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; margin:0; line-height:1.12; color:var(--plum); }
+    p{ margin:0; }
+    a{ color:var(--mauve-ink); }
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+    .skip{ position:absolute; left:-9999px; top:0; background:var(--plum); color:#fff; padding:12px 18px; z-index:200; }
+    .skip:focus{ left:0; }
+    a:focus-visible, .brand:focus-visible{ outline:3px solid var(--mauve); outline-offset:2px; }
+
+    /* header */
+    .nav{ background:var(--paper); border-bottom:1px solid var(--line); }
+    .nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:18px;
+      max-width:var(--maxw); margin:0 auto; padding:14px 24px; }
+    .brand{ display:flex; align-items:center; text-decoration:none; }
+    .brand-logo{ height:62px; width:auto; display:block; }
+    .back-link{ font-family:'Raleway','Source Sans 3',sans-serif; font-size:15px; font-weight:600;
+      color:var(--plum2); text-decoration:none; }
+    .back-link:hover{ color:var(--rose-ink); }
+
+    /* content */
+    main{ padding:clamp(48px,7vw,88px) 0 clamp(56px,8vw,96px); }
+    .doc{ max-width:72ch; }
+    .eyebrow{ font-family:'Raleway','Source Sans 3',sans-serif; font-size:12.5px; font-weight:700;
+      letter-spacing:.2em; text-transform:uppercase; color:var(--rose-ink); margin:0 0 14px;
+      display:flex; align-items:center; gap:14px; }
+    .eyebrow::before{ content:""; width:38px; height:2px; background:var(--coral); display:block; flex:0 0 auto; }
+    h1{ font-size:clamp(34px,5vw,52px); letter-spacing:-.01em; }
+    .legal-name{ font-size:17px; color:var(--plum2); margin-top:14px; font-weight:600; }
+    .updated{ font-size:15px; color:var(--plum2); margin-top:4px; }
+    .intro{ font-size:clamp(17px,2vw,19px); color:var(--plum2); margin-top:26px; }
+    h2{ font-size:clamp(22px,3vw,28px); color:var(--mauve); margin:40px 0 12px; }
+    .doc p + p{ margin-top:16px; color:var(--plum2); }
+    .doc p{ color:var(--plum2); }
+    .doc p strong{ color:var(--plum); font-weight:700; }
+    hr{ border:none; border-top:1px solid var(--line); margin:26px 0; }
+
+    /* footer (matches home) */
+    footer{ background:var(--plum); color:var(--rose); padding:56px 0 40px; }
+    .foot-inner{ display:flex; flex-wrap:wrap; gap:28px; justify-content:space-between; align-items:center; }
+    .foot-brand{ display:flex; align-items:center; gap:12px; }
+    .foot-brand .wm{ font-family:'Cormorant Garamond',serif; font-size:20px; color:#fff; }
+    .foot-brand .wm small{ display:block; font-family:'Source Sans 3',sans-serif; font-size:8.5px; letter-spacing:.24em;
+      text-transform:uppercase; color:#c8b4c2; margin-top:4px; font-weight:600; }
+    .socials{ display:flex; gap:12px; }
+    .socials a{ width:44px; height:44px; border:1px solid rgba(255,255,255,.22); border-radius:0;
+      display:flex; align-items:center; justify-content:center; color:#fff; transition:background .2s, border-color .2s; }
+    .socials a:hover{ background:rgba(255,255,255,.1); border-color:var(--coral); }
+    .foot-bottom{ margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,.12);
+      display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; font-size:13px; color:#c8b4c2; }
+    .foot-bottom a{ color:#c8b4c2; }
+
+    @media (max-width:560px){ .brand-logo{ height:52px; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/" aria-label="Triumph Mental Health Counseling home">
+        <img class="brand-logo" src="/images/triumph-logo.png" width="1280" height="511" alt="Triumph Mental Health Counseling. Find your path to the summit.">
+      </a>
+      <a class="back-link" href="/">&larr; Back to site</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <article class="doc">
+        <p class="eyebrow">Privacy</p>
+        <h1>Privacy Policy</h1>
+        <p class="legal-name">Triumph Mental Health Counseling, LLC</p>
+        <p class="updated">Last updated: 9 September 2026</p>
+
+        <p class="intro">This privacy policy explains what information this website collects, how it is used, and the choices you have. It applies to the website at triumphmentalhealth.com. It does not cover the separate client portal and scheduling system (SimplePractice), which has its own privacy notice and its own protections for health information.</p>
+
+        <h2>Who we are</h2>
+        <p>Triumph Mental Health Counseling, LLC is a mental health counseling practice based in Florida. If you have any questions about this policy or about the information we hold, you can contact us at <a href="mailto:jpclark@triumphmentalhealth.com">jpclark@triumphmentalhealth.com</a>.</p>
+
+        <h2>The information we collect</h2>
+        <p><strong>Information you give us.</strong> If you fill in the contact form on this website, we collect the details you enter, such as your name, email address and any message you choose to send. You decide what to include, so please do not enter sensitive health details in the website form. If you would like to become a client or discuss your care, we will move that conversation to a secure channel.</p>
+        <p><strong>Information collected automatically.</strong> This website is designed to respect your privacy. It does not use tracking cookies, advertising tools or analytics that identify you. Our hosting provider, Cloudflare, processes basic technical information such as your browser type, device type and general region as part of delivering and securing the website. This information is handled in aggregate, is not used to profile you, and does not identify you personally.</p>
+
+        <h2>How we use your information</h2>
+        <p>We use the information you send through the contact form only to respond to your enquiry and to arrange next steps if you choose to move forward. We do not sell your information, and we do not use it for advertising or to build a profile of you.</p>
+
+        <h2>Booking and client care</h2>
+        <p>If you decide to book or become a client, that process happens through SimplePractice, a secure platform designed for healthcare practices. Any health information you share as part of your care is handled under that system's protections and under the practice's clinical privacy obligations, separately from this website.</p>
+
+        <h2>How your information is stored and shared</h2>
+        <p>Contact form submissions are handled by Formspree, a form-processing service, which passes your message to us by email so we can reply. Formspree acts as our service provider and processes this information on our behalf. The website itself is hosted by Cloudflare. We do not share your information with anyone else except where we are required to by law.</p>
+
+        <h2>Cookies</h2>
+        <p>This website does not use tracking or advertising cookies, and it does not use analytics that identify individual visitors. Because of this, there is no cookie banner: there are no non-essential cookies to consent to. Any strictly necessary technical data is handled by our hosting provider as described above.</p>
+
+        <h2>Your choices and rights</h2>
+        <p>You can ask us what information we hold about you, ask us to correct it, or ask us to delete it. To make any of these requests, email us at <a href="mailto:jpclark@triumphmentalhealth.com">jpclark@triumphmentalhealth.com</a> and we will respond as soon as we reasonably can.</p>
+
+        <h2>Children</h2>
+        <p>This website is intended for adults. We do not knowingly collect information from children through this site.</p>
+
+        <h2>Changes to this policy</h2>
+        <p>We may update this policy from time to time. When we do, we will change the "last updated" date at the top of this page.</p>
+
+        <h2>Contact</h2>
+        <p>Triumph Mental Health Counseling, LLC<br>
+        Email: <a href="mailto:jpclark@triumphmentalhealth.com">jpclark@triumphmentalhealth.com</a></p>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-inner">
+        <div class="foot-brand">
+          <svg class="mark" width="40" height="30" viewBox="0 0 120 84" role="img" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="fmk" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9B6BFF"/><stop offset=".55" stop-color="#D67ABF"/><stop offset="1" stop-color="#F58E86"/>
+              </linearGradient>
+            </defs>
+            <g fill="none" stroke="url(#fmk)" stroke-width="4" stroke-linejoin="round">
+              <path d="M35 8 L8 74 L62 74 Z"/><path d="M85 8 L58 74 L112 74 Z"/><path d="M60 30 L42 74 L78 74 Z"/>
+            </g>
+          </svg>
+          <span class="wm">Triumph<small>Mental Health Counseling</small></span>
+        </div>
+
+        <div class="socials" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/jeannine-pearce-clark-8a7467246/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21H9z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/triumphmentalhealth/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <span>&copy; <span id="yr"></span> Triumph Mental Health Counseling. All rights reserved.</span>
+        <span><a href="/">Home</a> &middot; Fort Lauderdale, Florida &middot; Telehealth across Florida</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

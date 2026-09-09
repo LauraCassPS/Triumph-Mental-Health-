@@ -52,11 +52,21 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Source+Sans+3:wght@400;600;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts are self-hosted (see @font-face in the stylesheet). No third-party font requests. -->
+  <link rel="preload" href="/fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
+    /* ---------- Self-hosted fonts (no third-party requests; latin woff2) ---------- */
+    @font-face{ font-family:'Cormorant Garamond'; font-style:normal; font-weight:400 500;
+      font-display:swap; src:url('/fonts/cormorant-garamond.woff2') format('woff2'); }
+    @font-face{ font-family:'Cormorant Garamond'; font-style:italic; font-weight:500;
+      font-display:swap; src:url('/fonts/cormorant-garamond-italic.woff2') format('woff2'); }
+    @font-face{ font-family:'Source Sans 3'; font-style:normal; font-weight:400 700;
+      font-display:swap; src:url('/fonts/source-sans-3.woff2') format('woff2'); }
+    @font-face{ font-family:'Raleway'; font-style:normal; font-weight:400 700;
+      font-display:swap; src:url('/fonts/raleway.woff2') format('woff2'); }
+
     /* ============================================================
        TRIUMPH MENTAL HEALTH COUNSELING
        Fonts: Cormorant Garamond (serif headings) + Source Sans 3 (body) + Raleway (labels/nav)
@@ -199,7 +209,7 @@
 
     /* ============ SERVICES ============ */
     .services{ background:var(--rose); }
-    .svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .svc-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
     .card{ background:var(--paper); border:1px solid var(--line); border-radius:0; padding:0; overflow:hidden;
       display:flex; flex-direction:column; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
     .card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--coral); }
@@ -320,6 +330,20 @@
     .field textarea{ min-height:120px; resize:vertical; }
     form .btn{ width:100%; text-align:center; margin-top:6px; }
     .form-note{ font-size:12.5px; color:var(--plum2); margin-top:12px; text-align:center; }
+    /* Helper note under the message field */
+    .form-hint{ font-size:12.5px; color:var(--plum2); margin-top:8px; line-height:1.5; }
+    /* Honeypot: hidden from people and assistive tech, still submitted by bots */
+    .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+    /* Consent checkbox row */
+    .field-consent{ display:flex; align-items:flex-start; gap:10px; }
+    .field-consent input[type="checkbox"]{ width:20px; height:20px; flex:0 0 auto; margin-top:2px;
+      accent-color:var(--mauve); cursor:pointer; }
+    .field-consent label{ margin-bottom:0; font-size:13px; font-weight:600; line-height:1.5;
+      letter-spacing:0; color:var(--plum2); cursor:pointer; }
+    .field-consent label a{ color:var(--mauve-ink); }
+    /* Native invalid state (announced by the browser on submit) */
+    .field input:invalid:not(:placeholder-shown),
+    .field textarea:invalid:not(:placeholder-shown){ border-color:var(--rose-ink); }
 
     /* ============ INSURANCE ============ */
     .insurance{ text-align:center; }
@@ -336,7 +360,17 @@
     .ins-private{ font-family:'Raleway','Source Sans 3',sans-serif; font-style:italic;
       font-weight:600; font-size:clamp(23px,2.6vw,30px); line-height:1; color:#1B9E57;
       white-space:nowrap; }
-    .ins-note{ margin-top:28px; font-size:15px; color:var(--plum2); max-width:60ch; margin-left:auto; margin-right:auto; }
+    .ins-note{ margin-top:28px; font-size:15px; color:var(--plum2); max-width:82ch; margin-left:auto; margin-right:auto; }
+
+    /* ============ BACK TO TOP ============ */
+    .to-top{ position:fixed; right:clamp(18px,4vw,32px); bottom:clamp(18px,4vw,32px); z-index:90;
+      width:52px; height:52px; border-radius:50%; border:none; cursor:pointer;
+      background:var(--mauve); color:#F2EDF0; display:flex; align-items:center; justify-content:center;
+      box-shadow:var(--shadow); opacity:0; visibility:hidden; transform:translateY(10px);
+      transition:opacity .25s ease, transform .25s ease, background .2s ease; }
+    .to-top.show{ opacity:1; visibility:visible; transform:translateY(0); }
+    .to-top:hover{ background:var(--plum); }
+    .to-top:focus-visible{ outline:3px solid var(--coral); outline-offset:3px; }
 
     /* ============ FAQ ============ */
     .faq-grid{ display:grid; grid-template-columns:.75fr 1.45fr; gap:clamp(28px,5vw,64px); align-items:start; }
@@ -509,18 +543,6 @@
             </div>
           </article>
 
-          <!-- Card 3 -->
-          <article class="card">
-            <div class="card-photo">
-              <img src="images/couples-counseling-triumph-mental-health.jpg" width="1200" height="857" alt="A couple sitting close together watching the sunset" loading="lazy">
-              <span class="tint" aria-hidden="true"></span>
-            </div>
-            <div class="card-body">
-              <div class="tag">03 — Couples</div>
-              <h3>Couples Counseling</h3>
-              <p>Rebuild trust, strengthen communication, and restore emotional connection in a supportive therapeutic space.</p>
-            </div>
-          </article>
         </div>
 
         <!-- Later-Life expanded detail -->
@@ -680,8 +702,8 @@
             <p class="meta">In-person and telehealth psychotherapy available.</p>
           </div>
           <div>
-            <!-- FORM PLACEHOLDER: replace action with your Formspree endpoint, e.g. https://formspree.io/f/xxxxxxx -->
-            <form action="#" method="POST" aria-label="Contact Jeannine">
+            <!-- FORM: replace YOUR_FORM_ID with the Formspree endpoint id, e.g. action="https://formspree.io/f/abcdwxyz" -->
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" aria-label="Contact Jeannine">
               <div class="field">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" autocomplete="name" required>
@@ -692,8 +714,21 @@
               </div>
               <div class="field">
                 <label for="message">How can Jeannine help?</label>
-                <textarea id="message" name="message" required></textarea>
+                <textarea id="message" name="message" aria-describedby="message-hint" required></textarea>
+                <p class="form-hint" id="message-hint">Please keep this brief, no need to share sensitive health information here.</p>
               </div>
+
+              <!-- Honeypot spam trap (Formspree). Hidden from people and screen readers; bots fill it and get rejected. -->
+              <div class="hp" aria-hidden="true">
+                <label for="company">Company (leave blank)</label>
+                <input type="text" id="company" name="_gotcha" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="field field-consent">
+                <input type="checkbox" id="consent" name="consent" value="yes" required>
+                <label for="consent">I agree to my details being sent to Triumph Mental Health Counseling so my enquiry can be answered. See the <a href="/privacy" target="_blank" rel="noopener">privacy policy</a>.</label>
+              </div>
+
               <button type="submit" class="btn btn-solid">Send Message</button>
             </form>
           </div>
@@ -710,7 +745,6 @@
         <div class="ins-box">
           <img class="l-word" src="images/ins/aetna.png" width="606" height="123" alt="Aetna" loading="lazy">
           <img class="l-tall" src="images/ins/bcbs.png" width="135" height="150" alt="Blue Cross Blue Shield" loading="lazy">
-          <img class="l-mid" src="images/ins/cigna.png" width="174" height="98" alt="Cigna" loading="lazy">
           <img class="l-wide" src="images/ins/optum.png" width="230" height="74" alt="Optum" loading="lazy">
           <img class="l-word" src="images/ins/evernorth.png" width="512" height="104" alt="Evernorth" loading="lazy">
           <img class="l-word" src="images/ins/united.png" width="1851" height="384" alt="UnitedHealthcare" loading="lazy">
@@ -720,7 +754,7 @@
           <span class="ins-private">Private Pay</span>
         </div>
 
-        <p class="ins-note">Private pay is available for those who prefer not to use insurance. If you don't see your plan listed, reach out and Jeannine can help you understand your options.</p>
+        <p class="ins-note">Private pay is available for those who prefer not to use insurance, starting at $165 per session. It means no diagnosis on file, no cap on the number of sessions, and your treatment details stay out of your insurance record. If you don't see your plan listed, reach out and Jeannine can help you understand your options.</p>
       </div>
     </section>
 
@@ -760,7 +794,7 @@
           </details>
           <details>
             <summary>What insurance plans do you accept?</summary>
-            <div class="answer">I currently accept Aetna, Blue Cross Blue Shield, Optum, Evernorth, Cigna, Medicare, and UnitedHealthcare. Private pay is available for those who prefer not to use insurance. If you don't see your plan listed, reach out, I can help you understand your options.</div>
+            <div class="answer">I currently accept Aetna, Blue Cross Blue Shield, Optum, Evernorth, Medicare, and UnitedHealthcare. Private pay is available for those who prefer not to use insurance, starting at $165 per session. It means no diagnosis on file, no cap on the number of sessions, and your treatment details stay out of your insurance record. If you don't see your plan listed, reach out, I can help you understand your options.</div>
           </details>
           <details>
             <summary>How do I schedule a first appointment?</summary>
@@ -797,19 +831,24 @@
           <a href="https://www.instagram.com/triumphmentalhealth/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           </a>
-          <!-- FACEBOOK: add the URL when you have it -->
-          <a href="#" aria-label="Facebook (link to be added)">
+          <!-- FACEBOOK: removed for launch (was a dead href="#"). Re-add with the real URL:
+          <a href="https://www.facebook.com/YOUR_PAGE" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.29-.04-1.3-.13-2.46-.13-2.43 0-4.1 1.48-4.1 4.2v2.34H7.7V13h2.74v8z"/></svg>
-          </a>
+          </a> -->
         </div>
       </div>
 
       <div class="foot-bottom">
         <span>&copy; <span id="yr"></span> Triumph Mental Health Counseling. All rights reserved.</span>
-        <span><a href="/privacy-policy">Privacy Policy</a> &middot; Fort Lauderdale, Florida &middot; Telehealth across Florida</span>
+        <span><a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a> &middot; Fort Lauderdale, Florida &middot; Telehealth across Florida</span>
       </div>
     </div>
   </footer>
+
+  <!-- Back to top -->
+  <button type="button" class="to-top" id="toTop" aria-label="Back to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
 
   <script>
     // Footer year
@@ -826,6 +865,18 @@
       function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 120); }
       onScroll();
       window.addEventListener('scroll', onScroll, { passive:true });
+    })();
+    // Back-to-top button: show after scrolling, smooth-scroll to top
+    (function(){
+      var btn = document.getElementById('toTop');
+      if(!btn) return;
+      function toggle(){ btn.classList.toggle('show', window.scrollY > 400); }
+      toggle();
+      window.addEventListener('scroll', toggle, { passive:true });
+      btn.addEventListener('click', function(){
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top:0, behavior: reduce ? 'auto' : 'smooth' });
+      });
     })();
   </script>
 </body>
