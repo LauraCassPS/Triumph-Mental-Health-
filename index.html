@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Triumph Mental Health Counseling | Fort Lauderdale Therapy</title>
-  <meta name="description" content="Psychotherapy for adults, couples, and families with Jeannine Pearce Clark, LMHC. In-person therapy in Fort Lauderdale and telehealth across Florida.">
+  <meta name="description" content="Psychotherapy for adults and families with Jeannine Pearce Clark, LMHC. In-person therapy in Fort Lauderdale and telehealth across Florida.">
   <meta name="robots" content="index, follow">
   <!-- PRODUCTION URL: confirm final domain, then update canonical, og:url, schema url, sitemap and robots. -->
   <link rel="canonical" href="https://www.triumphmentalhealth.com/">
@@ -19,14 +19,16 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.triumphmentalhealth.com/">
   <meta property="og:site_name" content="Triumph Mental Health Counseling">
-  <!-- og:image / twitter:image PENDING: create a 1200x630 image, place at /images/og-image.jpg, then add:
-       <meta property="og:image" content="https://www.triumphmentalhealth.com/images/og-image.jpg">
-       <meta name="twitter:image" content="https://www.triumphmentalhealth.com/images/og-image.jpg"> -->
+  <meta property="og:image" content="https://www.triumphmentalhealth.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Triumph Mental Health Counseling. Find your path to the summit.">
 
   <!-- Twitter card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Triumph Mental Health Counseling">
   <meta name="twitter:description" content="A safe and supportive space where growth, healing, and clarity begin. In-person in Fort Lauderdale and telehealth across Florida.">
+  <meta name="twitter:image" content="https://www.triumphmentalhealth.com/images/og-image.jpg">
 
   <!-- Schema.org structured data -->
   <script type="application/ld+json">
@@ -34,7 +36,7 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Triumph Mental Health Counseling",
-    "description": "Psychotherapy for adults, couples, and families with Jeannine Pearce Clark, M.Ed., LMHC, a board-certified licensed mental health counselor. In-person therapy in Fort Lauderdale and telehealth across Florida.",
+    "description": "Psychotherapy for adults and families with Jeannine Pearce Clark, M.Ed., LMHC, a board-certified licensed mental health counselor. In-person therapy in Fort Lauderdale and telehealth across Florida.",
     "url": "https://www.triumphmentalhealth.com/",
     "image": "https://www.triumphmentalhealth.com/images/triumph-logo.png",
     "address": {
@@ -47,7 +49,8 @@
     "founder": { "@type": "Person", "name": "Jeannine Pearce Clark", "honorificSuffix": "M.Ed., LMHC" },
     "sameAs": [
       "https://www.linkedin.com/in/jeannine-pearce-clark-8a7467246/",
-      "https://www.instagram.com/triumphmentalhealth/"
+      "https://www.instagram.com/triumphmentalhealth/",
+      "https://www.facebook.com/profile.php?id=61575566224590"
     ]
   }
   </script>
@@ -244,7 +247,7 @@
     .cdp{ display:flex; align-items:center; gap:14px; margin-top:24px; padding:16px 22px;
       background:var(--lav); border-radius:0; font-size:15px; color:var(--plum); }
     .cdp b{ font-weight:700; }
-    .later-cta{ margin-top:26px; }
+    .later-cta{ margin-top:26px; text-align:center; }
 
     /* ============ THERAPEUTIC MODALITIES (CSS-only tabs) ============ */
     .mod .sec-head{ margin-bottom:34px; }
@@ -299,9 +302,9 @@
     /* Photo fills the full column so its bottom lines up with the credentials box */
     .about-photo .photo-ph{ position:absolute; inset:0; width:100%; height:100%;
       aspect-ratio:auto; min-height:0; }
-    /* Request Appointment centered near the bottom of the photo */
-    .about-photo .about-cta{ position:absolute; left:50%; bottom:22px; transform:translateX(-50%);
-      margin:0; text-align:center; z-index:2; }
+    /* Bias the crop slightly toward the top so the crown is never clipped if the
+       frame ever gets wider than the photo. Invisible at desktop (sides crop only). */
+    .about-photo .photo-ph img{ object-position:50% 20%; }
     .about h2{ font-size:clamp(28px,4vw,40px); margin-bottom:22px; }
     .about p + p{ margin-top:18px; color:var(--plum2); }
     .about .lead-body{ color:var(--plum2); }
@@ -311,7 +314,8 @@
     .creds ul{ margin:0; padding:0; list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; }
     .creds li{ font-size:15px; color:var(--plum); padding-left:22px; position:relative; line-height:1.45; }
     .creds li::before{ content:""; position:absolute; left:0; top:7px; width:8px; height:8px; background:var(--coral); }
-    .about-cta{ margin-top:26px; }
+    /* Request Appointment centered underneath the whole About row (photo + credentials) */
+    .about-cta{ margin-top:36px; text-align:center; }
 
     /* ============ REACH OUT (contact) ============ */
     .contact{ background:var(--plum); color:var(--rose); }
@@ -411,9 +415,9 @@
       .tags{ grid-template-columns:repeat(3,1fr); }
       .svc-grid{ grid-template-columns:1fr; }
       .later-cols{ grid-template-columns:1fr; }
+      /* Stack the photo naturally on phones (no absolute fill) */
       .about-photo{ position:static; min-height:0; }
       .about-photo .photo-ph{ position:relative; width:auto; height:auto; min-height:0; aspect-ratio:4/5; }
-      .about-photo .about-cta{ position:static; transform:none; margin:18px auto 0; }
     }
     @media (max-width:900px){
       .navlinks{ position:fixed; inset:92px 0 auto 0; flex-direction:column; align-items:stretch;
@@ -498,7 +502,7 @@
             <p class="lead">Jeannine works with individuals experiencing anxiety, depression, workplace stress and burnout, life transitions, infertility, trauma, caregiver responsibilities, relationship issues, teen concerns and substance use disorders.</p>
             <p class="lead">Whether you're feeling overwhelmed, disconnected, or carrying the emotional weight of caring for others, psychotherapy can help you reconnect with your resilience and move forward with confidence.</p>
             <div class="cred-box">
-              <b>Jeannine Pearce Clark, M.Ed., LMHC,</b> is a board-certified, licensed mental health counselor offering psychotherapy for adults, couples, and families. Her goal is to help you navigate life's challenges with compassion, professionalism, and evidence-based care.
+              <b>Jeannine Pearce Clark, M.Ed., LMHC,</b> is a board-certified, licensed mental health counselor offering psychotherapy for adults and families. Her goal is to help you navigate life's challenges with compassion, professionalism, and evidence-based care.
             </div>
           </div>
         </div>
@@ -570,7 +574,7 @@
           </div>
 
           <div class="later-cta">
-            <a href="#contact" class="btn btn-solid">Request Appointment</a>
+            <a href="https://jeannine-clark.clientsecure.me" class="btn btn-solid" target="_blank" rel="noopener">Request Appointment</a>
           </div>
         </div>
       </div>
@@ -666,9 +670,6 @@
             <div class="photo-ph">
               <img src="images/about-jeannine-pearce-clark-lmhc.jpg" width="989" height="1200" alt="Portrait of Jeannine Pearce Clark, licensed mental health counselor" loading="lazy">
             </div>
-            <div class="about-cta">
-              <a href="#contact" class="btn btn-solid">Request Appointment</a>
-            </div>
           </div>
           <div class="about-body">
             <p class="eyebrow">About</p>
@@ -687,6 +688,9 @@
               </ul>
             </div>
           </div>
+        </div>
+        <div class="about-cta">
+          <a href="https://jeannine-clark.clientsecure.me" class="btn btn-solid" target="_blank" rel="noopener">Request Appointment</a>
         </div>
       </div>
     </section>
@@ -777,12 +781,16 @@
             <div class="answer">Most people who come to therapy aren't in crisis. They are navigating something that feels harder than it should, a relationship, a transition, a pattern they keep repeating, a weight they've been carrying alone. Therapy gives you space to make sense of it with someone trained to help. If you've been wondering whether to reach out, that wondering is usually worth a conversation.</div>
           </details>
           <details>
-            <summary>How do I choose the right therapist for couples counseling?</summary>
-            <div class="answer">Fit matters the most. You want someone both partners feel comfortable with, who is objective, and who has real experience working with couples, not just individuals. In a first session, pay attention to whether you both feel heard and whether the therapist can hold the room when things get difficult. If something feels off, it's okay to keep looking.</div>
-          </details>
-          <details>
             <summary>What are the benefits of individual therapy for anxiety?</summary>
             <div class="answer">Therapy helps you understand what's driving the anxiety, not just manage the symptoms. You learn to notice your patterns, work with your nervous system instead of against it, and build practical tools for the moments anxiety shows up. Over time, the goal isn't to eliminate anxiety, it's to feel less controlled by it and more confident in your ability to respond.</div>
+          </details>
+          <details>
+            <summary>Do you work with older adults facing retirement, aging, and other later-life transitions?</summary>
+            <div class="answer">Yes. Retirement and aging change your routine, your independence, and your sense of purpose, often all at once, and that adjustment tends to be bigger than people expect. Therapy gives you space to grieve what ended, separate your worth from what you did for a living, and stay connected when your world starts to feel smaller. The goal is to adapt to what's changed without losing your sense of who you are.</div>
+          </details>
+          <details>
+            <summary>What support do you offer around dementia and cognitive decline?</summary>
+            <div class="answer">A diagnosis lands on the whole family, not just the person receiving it. For the individual, therapy can support mental engagement, reduce distress, and protect dignity for as long as possible. For families, it helps with the harder conversations, the shifting roles, and the grief that often starts long before anyone expects it. I work with individuals, with family members, and with both together.</div>
           </details>
           <details>
             <summary>Do you offer support for caregivers?</summary>
@@ -831,10 +839,9 @@
           <a href="https://www.instagram.com/triumphmentalhealth/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           </a>
-          <!-- FACEBOOK: removed for launch (was a dead href="#"). Re-add with the real URL:
-          <a href="https://www.facebook.com/YOUR_PAGE" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <a href="https://www.facebook.com/profile.php?id=61575566224590" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.29-.04-1.3-.13-2.46-.13-2.43 0-4.1 1.48-4.1 4.2v2.34H7.7V13h2.74v8z"/></svg>
-          </a> -->
+          </a>
         </div>
       </div>
 
