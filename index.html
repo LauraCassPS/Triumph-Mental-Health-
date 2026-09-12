@@ -423,6 +423,15 @@
     .foot-bottom{ margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,.12);
       display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; font-size:13px; color:#c8b4c2; }
     .foot-bottom a{ color:#c8b4c2; }
+    /* Legal small print (footer) */
+    .foot-legal{ margin-top:18px; font-size:12px; line-height:1.65; color:#a894a4; }
+
+    /* Crisis notice beside the contact form (on the dark plum section) */
+    .crisis-note{ margin-top:24px; padding:16px 20px; border:1px solid rgba(247,169,175,.38);
+      border-left:4px solid var(--coral); background:rgba(255,255,255,.06);
+      font-size:14.5px; line-height:1.6; color:#f3e3ea; }
+    .crisis-note strong{ color:#fff; }
+    .crisis-note a{ color:#fff; font-weight:700; text-decoration:underline; }
 
     /* ============ RESPONSIVE ============ */
     @media (max-width:900px){
@@ -726,6 +735,9 @@
             <h2>Your journey to <span class="serif-i">healing</span> starts here.</h2>
             <p>Start your journey to wellness. Send a brief message and Jeannine will reply within two business days to schedule a consultation.</p>
             <p class="meta">In-person and telehealth psychotherapy available.</p>
+            <div class="crisis-note" role="note">
+              <strong>This website is not for emergencies.</strong> If you are in crisis or thinking about harming yourself, call or text <a href="tel:988">988</a> (Suicide &amp; Crisis Lifeline) or call <a href="tel:911">911</a>.
+            </div>
           </div>
           <div>
             <!-- FORM: posts to Formspree. Submits via fetch so the visitor stays on the page;
@@ -876,6 +888,8 @@
         <span>&copy; <span id="yr"></span> Triumph Mental Health Counseling. All rights reserved.</span>
         <span><a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> &middot; Fort Lauderdale, Florida &middot; Telehealth across Florida</span>
       </div>
+
+      <p class="foot-legal">The information on this website is for general informational purposes only and is not medical or mental health advice. Viewing this site or submitting the contact form does not create a therapist&ndash;client relationship, which begins only after an intake appointment and signed consent. Jeannine Pearce Clark is licensed in the State of Florida; in-person and telehealth services are available only to clients located in Florida at the time of their session.</p>
     </div>
   </footer>
 
