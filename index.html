@@ -56,6 +56,7 @@
   </script>
 
   <!-- Fonts are self-hosted (see @font-face in the stylesheet). No third-party font requests. -->
+  <link rel="preload" href="images/hero-mountain-summit-2026.jpg" as="image" fetchpriority="high">
   <link rel="preload" href="fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -168,10 +169,13 @@
     /* Ensure the Contact button text wins over the .navlinks a colour rules */
     .navlinks a.btn-contact, .navlinks a.btn-contact:hover{ color:#fff; }
     /* mobile menu (CSS-only) */
+    /* Desktop: the toggle is not used, so keep it out of the tab order entirely. */
     .nav-toggle{ display:none; }
     .hamburger{ display:none; background:none; border:1px solid var(--line); border-radius:0;
       padding:10px 12px; cursor:pointer; }
     .hamburger span{ display:block; width:22px; height:2px; background:var(--plum); margin:4px 0; }
+    /* The checkbox is the real control; show its focus ring on the hamburger it labels. */
+    .nav-toggle:focus-visible + .hamburger{ outline:3px solid var(--mauve); outline-offset:2px; }
 
     /* ============ HERO (left-aligned, light overlay, dark text) ============ */
     .hero{ position:relative; min-height:min(90vh,860px); min-height:min(90dvh,860px); display:flex; align-items:center;
@@ -179,17 +183,20 @@
     .hero .bg{ position:absolute; inset:0; z-index:0;
       background-image:url('images/hero-mountain-summit-2026.jpg');
       background-size:cover; background-position:center; }
-    /* Overlay: #F2EDF0 at 70%. NOTE: if a real photo is busy/dark behind the
-       text, raise this opacity for AA contrast on the dark text. */
+    /* Overlay scrim over the hero photo. The mid stop is set so the dark hero
+       text clears WCAG AA against the darkest part of the photograph behind it
+       (measured at 1280-1920px). Do not lower it without re-checking contrast. */
     .hero .overlay{ position:absolute; inset:0; z-index:1;
-      background:linear-gradient(180deg, rgba(242,237,240,.28) 0%, rgba(242,237,240,.42) 45%, rgba(242,237,240,.88) 100%); }
+      background:linear-gradient(180deg, rgba(242,237,240,.28) 0%, rgba(242,237,240,.52) 45%, rgba(242,237,240,.88) 100%); }
     /* Extra top padding opens up space below the fixed nav/logo before the headline;
        bottom padding keeps the tall banner balanced. */
     .hero .inner{ position:relative; z-index:2; width:100%; max-width:var(--maxw); margin:0 auto;
       padding:clamp(210px,22vw,268px) 24px clamp(110px,12vw,140px); }
     .hero .block{ max-width:600px; text-align:left; }
     .hero h1{ font-size:clamp(42px,7vw,74px); line-height:1.02; letter-spacing:-.015em; color:var(--plum); }
-    .hero p{ font-size:clamp(17px,2.2vw,20px); color:var(--plum2); max-width:520px;
+    /* Uses --plum (not --plum2): over the hero photograph, --plum2 only reaches
+       ~3.3-4.3:1 and fails AA for body-size text. --plum clears 5.6:1 everywhere. */
+    .hero p{ font-size:clamp(17px,2.2vw,20px); color:var(--plum); max-width:520px;
       margin:22px 0 32px; line-height:1.6; }
 
     /* ============ WHO I WORK WITH ============ */
@@ -333,9 +340,12 @@
       padding:12px 14px; border:1px solid var(--line); border-radius:0; background:var(--paper); }
     .field textarea{ min-height:120px; resize:vertical; }
     form .btn{ width:100%; text-align:center; margin-top:6px; }
-    .form-note{ font-size:12.5px; color:var(--plum2); margin-top:12px; text-align:center; }
+    /* These three live inside .contact, whose `p` rule is more specific than a bare
+       class, so they must be scoped or they inherit the pale on-plum text colour
+       and become unreadable on the white form. */
+    .contact .form-note{ font-size:12.5px; color:var(--plum2); margin-top:12px; text-align:center; }
     /* Helper note under the message field */
-    .form-hint{ font-size:12.5px; color:var(--plum2); margin-top:8px; line-height:1.5; }
+    .contact .form-hint{ font-size:12.5px; color:var(--plum2); margin-top:8px; line-height:1.5; }
     /* Honeypot: hidden from people and assistive tech, still submitted by bots */
     .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
     /* Consent checkbox row */
@@ -345,9 +355,17 @@
     .field-consent label{ margin-bottom:0; font-size:13px; font-weight:600; line-height:1.5;
       letter-spacing:0; color:var(--plum2); cursor:pointer; }
     .field-consent label a{ color:var(--mauve-ink); }
-    /* Native invalid state (announced by the browser on submit) */
-    .field input:invalid:not(:placeholder-shown),
-    .field textarea:invalid:not(:placeholder-shown){ border-color:var(--rose-ink); }
+    /* Native invalid state (announced by the browser on submit).
+       :user-invalid, not :invalid -- these fields carry no placeholder, so the old
+       :not(:placeholder-shown) guard was always true and flagged untouched fields. */
+    .field input:user-invalid,
+    .field textarea:user-invalid{ border-color:var(--rose-ink); }
+    /* Submit status message (success / error after sending) */
+    .contact .form-status{ margin-top:14px; padding:12px 14px; font-size:14px; line-height:1.55;
+      border-left:3px solid var(--mauve-ink); background:var(--rose); color:var(--plum); }
+    .contact .form-status.is-error{ border-left-color:var(--rose-ink); }
+    /* Disabled submit while sending */
+    form .btn[aria-disabled="true"]{ opacity:.65; pointer-events:none; }
 
     /* ============ INSURANCE ============ */
     .insurance{ text-align:center; }
@@ -426,6 +444,9 @@
       .navlinks a{ padding:14px 4px; border-bottom:1px solid var(--line); font-size:16px; }
       .navlinks .btn{ margin-top:10px; text-align:center; border-bottom:none; }
       .nav-toggle:checked ~ .navlinks{ transform:translateY(0); }
+      /* Off-screen rather than display:none, so it stays keyboard focusable. */
+      .nav-toggle{ display:block; position:absolute; width:1px; height:1px;
+        opacity:0; margin:0; pointer-events:none; }
       .hamburger{ display:block; }
       .brand-logo{ height:58px; }
       .nav.scrolled .brand-logo{ height:48px; }
@@ -455,8 +476,9 @@
         <img class="brand-logo" src="images/triumph-logo.png" width="1280" height="511" alt="Triumph Mental Health Counseling. Find your path to the summit.">
       </a>
 
-      <input type="checkbox" id="navToggle" class="nav-toggle" hidden>
-      <label class="hamburger" for="navToggle" aria-label="Toggle menu">
+      <!-- Visually hidden but still focusable, so the menu can be opened from the keyboard. -->
+      <input type="checkbox" id="navToggle" class="nav-toggle" aria-label="Open and close the navigation menu">
+      <label class="hamburger" for="navToggle">
         <span></span><span></span><span></span>
       </label>
 
@@ -588,20 +610,20 @@
           <h2>Trained in <span class="serif-i">evidence-based</span> methods.</h2>
         </div>
 
-        <div class="tabwrap">
+        <div class="tabwrap" role="radiogroup" aria-label="Therapeutic modalities">
           <input class="radio" type="radio" name="mod" id="m0" checked>
           <input class="radio" type="radio" name="mod" id="m1">
           <input class="radio" type="radio" name="mod" id="m2">
           <input class="radio" type="radio" name="mod" id="m3">
 
-          <div class="tabs" role="radiogroup" aria-label="Therapeutic modalities">
+          <div class="tabs">
             <label class="tab" for="m0"><span class="abbr">CBT</span><span class="full">Cognitive Behavioral</span></label>
             <label class="tab" for="m1"><span class="abbr">EMDR</span><span class="full">Reprocessing</span></label>
             <label class="tab" for="m2"><span class="abbr">TF-CBT</span><span class="full">Trauma-Focused</span></label>
             <label class="tab" for="m3"><span class="abbr">SFBT</span><span class="full">Solution-Focused</span></label>
           </div>
 
-          <div class="panels">
+          <div class="panels" aria-live="polite">
             <div class="panel p0">
               <div class="pk">Cognitive Behavioral Therapy</div>
               <h3>CBT</h3>
@@ -706,8 +728,10 @@
             <p class="meta">In-person and telehealth psychotherapy available.</p>
           </div>
           <div>
-            <!-- FORM: replace YOUR_FORM_ID with the Formspree endpoint id, e.g. action="https://formspree.io/f/abcdwxyz" -->
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" aria-label="Contact Jeannine">
+            <!-- FORM: posts to Formspree. Submits via fetch so the visitor stays on the page;
+                 with JavaScript off it falls back to a normal POST and Formspree's own thank-you page. -->
+            <form id="contactForm" action="https://formspree.io/f/xzebwlyr" method="POST" aria-label="Contact Jeannine">
+              <input type="hidden" name="_subject" value="New enquiry from triumphmentalhealth.com">
               <div class="field">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" autocomplete="name" required>
@@ -733,7 +757,10 @@
                 <label for="consent">I agree to my details being sent to Triumph Mental Health Counseling so my enquiry can be answered. See the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>.</label>
               </div>
 
-              <button type="submit" class="btn btn-solid">Send Message</button>
+              <button type="submit" class="btn btn-solid" id="contactSubmit">Send Message</button>
+
+              <!-- Submission status. Announced to screen readers; hidden until there is something to say. -->
+              <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
             </form>
           </div>
         </div>
@@ -872,6 +899,55 @@
       function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 120); }
       onScroll();
       window.addEventListener('scroll', onScroll, { passive:true });
+    })();
+    // Contact form: submit to Formspree in the background so the visitor stays on the page.
+    // Without JavaScript the form still POSTs normally and Formspree shows its own confirmation.
+    (function(){
+      var form = document.getElementById('contactForm');
+      if(!form || !window.fetch) return;
+      var status = document.getElementById('formStatus');
+      var btn = document.getElementById('contactSubmit');
+      var label = btn ? btn.textContent : 'Send Message';
+      var FALLBACK = 'Sorry, your message could not be sent. Please try again, or email Jeannine directly at jpclark@triumphmentalhealth.com.';
+      var sending = false;
+
+      function say(msg, isError){
+        status.textContent = msg;
+        status.classList.toggle('is-error', !!isError);
+        status.hidden = false;
+      }
+
+      form.addEventListener('submit', function(e){
+        if(!form.checkValidity()) return; // let the browser show its own messages
+        e.preventDefault();
+        // aria-disabled stops pointer clicks but not Enter, so guard against double sends.
+        if(sending) return;
+        sending = true;
+        status.hidden = true;
+        btn.setAttribute('aria-disabled','true');
+        btn.textContent = 'Sending...';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function(res){
+          if(res.ok){
+            form.reset();
+            say('Thank you. Your message has been sent, and Jeannine will reply within two business days.');
+          } else {
+            // Formspree's own errors are technical ("Form not found"), so show a
+            // message the visitor can actually act on instead.
+            say(FALLBACK, true);
+          }
+        }).catch(function(){
+          say(FALLBACK, true);
+        }).then(function(){
+          sending = false;
+          btn.removeAttribute('aria-disabled');
+          btn.textContent = label;
+        });
+      });
     })();
     // Back-to-top button: show after scrolling, smooth-scroll to top
     (function(){
