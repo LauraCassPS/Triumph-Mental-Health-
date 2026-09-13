@@ -1,0 +1,14 @@
+{
+  // Static-site deploy for Cloudflare Workers (the successor to Pages).
+  // No build step: the repo root IS the site. See .assetsignore for what is
+  // held back from upload.
+  "name": "triumph-mental-health",
+  "compatibility_date": "2026-09-12",
+  "assets": {
+    "directory": "./",
+    // /privacy serves privacy.html, /  serves index.html
+    "html_handling": "auto-trailing-slash",
+    // unknown URLs get the branded 404.html, not a generic Cloudflare error
+    "not_found_handling": "404-page"
+  }
+}
