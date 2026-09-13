@@ -344,8 +344,21 @@
        class, so they must be scoped or they inherit the pale on-plum text colour
        and become unreadable on the white form. */
     .contact .form-note{ font-size:12.5px; color:var(--plum2); margin-top:12px; text-align:center; }
-    /* Helper note under the message field */
+    /* Helper note under a field */
     .contact .form-hint{ font-size:12.5px; color:var(--plum2); margin-top:8px; line-height:1.5; }
+    /* Prominent "general enquiry only" warning above the consent row.
+       Scoped under .contact so it beats ".contact p { color:#e3cfda }" (the pale
+       on-plum body colour), which would otherwise wash the text out on the pink box. */
+    .contact .form-warning{ font-size:13px; line-height:1.55; color:var(--plum); background:#FBEFF1;
+      border-left:3px solid var(--rose-ink); padding:12px 14px; margin:4px 0 18px; }
+    .contact .form-warning b{ color:var(--plum); font-weight:700; }
+    /* Preferred contact method (radio pair) */
+    .field-radio fieldset{ border:none; margin:0; padding:0; }
+    .field-radio legend{ font-family:'Raleway','Source Sans 3',sans-serif; font-size:13px; font-weight:700;
+      letter-spacing:.02em; color:var(--plum); padding:0; margin-bottom:8px; }
+    .radio-row{ display:flex; gap:22px; flex-wrap:wrap; }
+    .radio-opt{ display:flex; align-items:center; gap:8px; font-size:15px; color:var(--plum); cursor:pointer; }
+    .radio-opt input[type="radio"]{ width:18px; height:18px; accent-color:var(--mauve); cursor:pointer; }
     /* Honeypot: hidden from people and assistive tech, still submitted by bots */
     .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
     /* Consent checkbox row */
@@ -364,6 +377,7 @@
     .contact .form-status{ margin-top:14px; padding:12px 14px; font-size:14px; line-height:1.55;
       border-left:3px solid var(--mauve-ink); background:var(--rose); color:var(--plum); }
     .contact .form-status.is-error{ border-left-color:var(--rose-ink); }
+    .contact .form-status a{ color:var(--rose-ink); font-weight:700; }
     /* Disabled submit while sending */
     form .btn[aria-disabled="true"]{ opacity:.65; pointer-events:none; }
 
@@ -733,7 +747,7 @@
           <div>
             <p class="eyebrow">Reach Out Today</p>
             <h2>Your journey to <span class="serif-i">healing</span> starts here.</h2>
-            <p>Start your journey to wellness. Send a brief message and Jeannine will reply within two business days to schedule a consultation.</p>
+            <p>Request a callback and Jeannine will reply within two business days to arrange a brief initial consultation.</p>
             <p class="meta">In-person and telehealth psychotherapy available.</p>
             <div class="crisis-note" role="note">
               <strong>This website is not for emergencies.</strong> If you are in crisis or thinking about harming yourself, call or text <a href="tel:988">988</a> (Suicide &amp; Crisis Lifeline) or call <a href="tel:911">911</a>.
@@ -753,9 +767,17 @@
                 <input type="email" id="email" name="email" autocomplete="email" required>
               </div>
               <div class="field">
-                <label for="message">How can Jeannine help?</label>
-                <textarea id="message" name="message" aria-describedby="message-hint" required></textarea>
-                <p class="form-hint" id="message-hint">Please keep this brief, no need to share sensitive health information here.</p>
+                <label for="phone">Phone (optional)</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel">
+              </div>
+              <div class="field field-radio">
+                <fieldset>
+                  <legend>Preferred contact method</legend>
+                  <div class="radio-row">
+                    <label class="radio-opt"><input type="radio" name="preferred_contact" value="Email" checked> Email</label>
+                    <label class="radio-opt"><input type="radio" name="preferred_contact" value="Phone"> Phone</label>
+                  </div>
+                </fieldset>
               </div>
 
               <!-- Honeypot spam trap (Formspree). Hidden from people and screen readers; bots fill it and get rejected. -->
@@ -764,12 +786,14 @@
                 <input type="text" id="company" name="_gotcha" tabindex="-1" autocomplete="off">
               </div>
 
+              <p class="form-warning"><b>This form is for general enquiries only.</b> Please do not include information about your health, symptoms, treatment or personal circumstances. This form is not monitored for emergencies.</p>
+
               <div class="field field-consent">
                 <input type="checkbox" id="consent" name="consent" value="yes" required>
-                <label for="consent">I agree to my details being sent to Triumph Mental Health Counseling so my enquiry can be answered. See the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>.</label>
+                <label for="consent">I understand that this is a general enquiry form and should not be used to send confidential or health information. See the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>.</label>
               </div>
 
-              <button type="submit" class="btn btn-solid" id="contactSubmit">Send Message</button>
+              <button type="submit" class="btn btn-solid" id="contactSubmit">Request a callback</button>
 
               <!-- Submission status. Announced to screen readers; hidden until there is something to say. -->
               <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
@@ -845,7 +869,7 @@
           </details>
           <details>
             <summary>How do I schedule a first appointment?</summary>
-            <div class="answer">Send a brief message through the contact form or book an initial consultation using the 'request appointment' button. I'll reply within two business days to schedule a 15-minute consultation. The consultation is a chance to hear about your situation, answer your questions, and decide together whether to book a first full session.</div>
+            <div class="answer">Use the general enquiry form to request a callback, or use the 'Request Appointment' button to continue securely through SimplePractice. I'll reply within two business days to arrange a brief initial consultation, a chance to hear about your situation, answer your questions, and decide together whether to book a first full session. Please do not include health or clinical information in the general enquiry form.</div>
           </details>
           </div>
         </div>
@@ -921,12 +945,13 @@
       if(!form || !window.fetch) return;
       var status = document.getElementById('formStatus');
       var btn = document.getElementById('contactSubmit');
-      var label = btn ? btn.textContent : 'Send Message';
-      var FALLBACK = 'Sorry, your message could not be sent. Please try again, or email Jeannine directly at jpclark@triumphmentalhealth.com.';
+      var label = btn ? btn.textContent : 'Request a callback';
+      // Static, trusted string; the SimplePractice link is set via innerHTML for the error case only.
+      var FALLBACK = 'Sorry, your request could not be sent. Please try again, or <a href="https://jeannine-clark.clientsecure.me" target="_blank" rel="noopener">request an appointment securely through SimplePractice</a>.';
       var sending = false;
 
       function say(msg, isError){
-        status.textContent = msg;
+        if(isError){ status.innerHTML = msg; } else { status.textContent = msg; }
         status.classList.toggle('is-error', !!isError);
         status.hidden = false;
       }
@@ -948,7 +973,7 @@
         }).then(function(res){
           if(res.ok){
             form.reset();
-            say('Thank you. Your message has been sent, and Jeannine will reply within two business days.');
+            say('Thank you. Your callback request has been sent. Jeannine will reply within two business days.');
           } else {
             // Formspree's own errors are technical ("Form not found"), so show a
             // message the visitor can actually act on instead.
