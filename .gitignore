@@ -11,3 +11,12 @@ Jeannine Logos  copy/
 *.docx
 CLINICAL-SUPERVISION-BUILD-NOTES.md
 .claude/
+
+# Local working notes — never deploy these
+DNS-BACKUP-*.md
+WEBSITE-BUILD-SUMMARY.md
+Triumph-Website-Build-Summary.pdf
+
+# Superseded insurance-logo originals (trimmed versions live in images/ins/)
+images/logo-*
+images/triumph-mental-health.png
