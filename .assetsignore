@@ -1,7 +1,25 @@
-# Files that live in the repo but must never be served publicly.
-.git
-.gitignore
+# Nothing here is served publicly. Mirrors .gitignore so that a local
+# `wrangler deploy` can never leak working files, not just the Git build.
+**/.git
+**/.DS_Store
+**/node_modules
+
+# Wrangler + editor internals
+.wrangler
+.claude
 .assetsignore
+.gitignore
 wrangler.jsonc
+
+# Working files, mockups and client source drops
+.impeccable
+design
+images/_source
+mockup-service-cards.html
+Jeannine Insurance Logos copy
+Jeannine Logos  copy
+
+# Internal notes and documents
 *.md
-.DS_Store
+*.pdf
+*.docx
