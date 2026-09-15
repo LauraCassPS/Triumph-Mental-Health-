@@ -361,6 +361,9 @@
     .radio-opt input[type="radio"]{ width:18px; height:18px; accent-color:var(--mauve); cursor:pointer; }
     /* Honeypot: hidden from people and assistive tech, still submitted by bots */
     .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+    /* Visually hidden, still read by screen readers (used for "opens in new tab"). */
+    .vh{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
     /* Consent checkbox row */
     .field-consent{ display:flex; align-items:flex-start; gap:10px; }
     .field-consent input[type="checkbox"]{ width:20px; height:20px; flex:0 0 auto; margin-top:2px;
@@ -398,6 +401,30 @@
       white-space:nowrap; }
     .ins-note{ margin-top:28px; font-size:15px; color:var(--plum2); max-width:82ch; margin-left:auto; margin-right:auto; }
 
+    /* Good Faith Estimate: native details/summary, no JavaScript.
+       The section is centred, but the panel body reads left-aligned. */
+    .gfe{ max-width:82ch; margin:14px auto 0; text-align:left; border-bottom:none; }
+    .gfe > summary{ list-style:none; cursor:pointer; display:flex; align-items:center; gap:10px;
+      min-height:44px; padding:10px 2px; font-family:'Source Sans 3',sans-serif;
+      font-size:15px; font-weight:600; color:var(--mauve-ink); text-decoration:underline;
+      text-underline-offset:3px; }
+    .gfe > summary::-webkit-details-marker{ display:none; }
+    /* The FAQ accordion sets details summary::after and details[open] summary::after;
+       both are cancelled here so the GFE panel uses its own boxed indicator. */
+    .gfe > summary::after, .gfe[open] > summary::after{ content:none; }
+    /* Open/close indicator: a shape change, not colour alone. */
+    .gfe > summary .gfe-ind{ flex:0 0 auto; width:22px; height:22px; border:1px solid var(--line);
+      display:inline-flex; align-items:center; justify-content:center; font-size:16px; line-height:1;
+      font-weight:400; color:var(--rose-ink); text-decoration:none; }
+    .gfe > summary .gfe-ind::before{ content:"+"; }
+    .gfe[open] > summary .gfe-ind::before{ content:"\2013"; }
+    .gfe > summary:hover{ color:var(--rose-ink); }
+    .gfe-panel{ padding:6px 2px 18px; }
+    .gfe-panel p{ font-size:15px; line-height:1.75; color:var(--plum2); }
+    .gfe-panel p + p, .gfe-panel ul + p{ margin-top:14px; }
+    .gfe-panel ul{ margin:14px 0 0; padding-left:20px; font-size:15px; line-height:1.75; color:var(--plum2); }
+    .gfe-panel li + li{ margin-top:10px; }
+
     /* ============ BACK TO TOP ============ */
     .to-top{ position:fixed; right:clamp(18px,4vw,32px); bottom:clamp(18px,4vw,32px); z-index:90;
       width:52px; height:52px; border-radius:50%; border:none; cursor:pointer;
@@ -434,11 +461,17 @@
     .socials a{ width:44px; height:44px; border:1px solid rgba(255,255,255,.22); border-radius:0;
       display:flex; align-items:center; justify-content:center; color:#fff; transition:background .2s, border-color .2s; }
     .socials a:hover{ background:rgba(255,255,255,.1); border-color:var(--coral); }
+    /* Below the divider: crisis warning, then copyright, then policy links. Stacks on every width. */
     .foot-bottom{ margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,.12);
-      display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; font-size:13px; color:#c8b4c2; }
+      font-size:13px; color:#c8b4c2; }
     .foot-bottom a{ color:#c8b4c2; }
-    /* Legal small print (footer) */
-    .foot-legal{ margin-top:18px; font-size:12px; line-height:1.65; color:#a894a4; }
+    .foot-crisis{ font-size:14.5px; line-height:1.65; color:#f3e3ea; max-width:92ch;
+      overflow-wrap:break-word; }
+    .foot-crisis strong{ color:#fff; }
+    .foot-crisis a{ color:#fff; font-weight:700; text-decoration:underline; }
+    .foot-copy{ margin-top:20px; line-height:1.6; overflow-wrap:break-word; }
+    .foot-links{ margin-top:8px; line-height:1.6; overflow-wrap:break-word; }
+    .foot-links .sep{ padding:0 6px; color:rgba(255,255,255,.35); }
 
     /* Crisis notice beside the contact form (on the dark plum section) */
     .crisis-note{ margin-top:24px; padding:16px 20px; border:1px solid rgba(247,169,175,.38);
@@ -786,7 +819,8 @@
                 <input type="text" id="company" name="_gotcha" tabindex="-1" autocomplete="off">
               </div>
 
-              <p class="form-warning"><b>This form is for general enquiries only.</b> Please do not include information about your health, symptoms, treatment or personal circumstances. This form is not monitored for emergencies.</p>
+              <!-- Client-supplied Important Privacy Notice. Sits above the consent checkbox and submit button. -->
+              <p class="form-warning"><b>Important Privacy Notice:</b> Standard website contact forms and emails are not fully secure or encrypted methods of electronic communication. By using this form, you accept the inherent privacy risks of unencrypted transmission. Please do not submit confidential medical information, clinical symptoms, or sensitive personal history through this form. This form is intended solely for basic scheduling and administrative inquiries.</p>
 
               <div class="field field-consent">
                 <input type="checkbox" id="consent" name="consent" value="yes" required>
@@ -822,6 +856,22 @@
         </div>
 
         <p class="ins-note">Private pay is available for those who prefer not to use insurance, starting at $165 per session. It means no diagnosis on file, no cap on the number of sessions, and your treatment details stay out of your insurance record. If you don't see your plan listed, reach out and Jeannine can help you understand your options.</p>
+
+        <!-- Good Faith Estimate (No Surprises Act). Native details/summary: works without JavaScript. -->
+        <details class="gfe">
+          <summary><span class="gfe-ind" aria-hidden="true"></span>Your right to a Good Faith Estimate</summary>
+          <div class="gfe-panel">
+            <!-- Visually hidden: the summary above says the same thing. Kept so the heading order stays intact for screen readers. -->
+            <h3 class="vh">YOUR RIGHT TO A GOOD FAITH ESTIMATE</h3>
+            <p>Under the Federal No Surprises Act, health care providers must give clients who do not have insurance or who are not using insurance an estimate of the bill for medical items and services.</p>
+            <ul>
+              <li>You have the right to receive a Good Faith Estimate for the total expected cost of any non-emergency items or services, including psychotherapy sessions.</li>
+              <li>You can request a Good Faith Estimate in writing at least 1 business day before your service. You can also ask for an estimate before you schedule.</li>
+              <li>If you receive a bill that is at least $400 more than your Good Faith Estimate, you can dispute the bill.</li>
+            </ul>
+            <p>For questions or more information about your right to a Good Faith Estimate, visit <a href="https://www.cms.gov/nosurprises" target="_blank" rel="noopener noreferrer">www.cms.gov/nosurprises<span class="vh"> (opens in new tab)</span></a>.</p>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -909,11 +959,15 @@
       </div>
 
       <div class="foot-bottom">
-        <span>&copy; <span id="yr"></span> Triumph Mental Health Counseling. All rights reserved.</span>
-        <span><a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> &middot; Fort Lauderdale, Florida &middot; Telehealth across Florida</span>
-      </div>
+        <p class="foot-crisis"><strong>CRISIS WARNING:</strong> If you are experiencing a life-threatening mental health emergency, please call <a href="tel:911">911</a>, go to the nearest emergency room, or call/text the Suicide &amp; Crisis Lifeline at <a href="tel:988">988</a>. Do not use this website, email, or online contact forms to communicate an emergency. This website is not monitored 24/7.</p>
 
-      <p class="foot-legal">The information on this website is for general informational purposes only and is not medical or mental health advice. Viewing this site or submitting the contact form does not create a therapist&ndash;client relationship, which begins only after an intake appointment and signed consent. Jeannine Pearce Clark is licensed in the State of Florida; in-person and telehealth services are available only to clients located in Florida at the time of their session.</p>
+        <p class="foot-copy">&copy; <span id="yr"></span> Triumph Mental Health Counseling, LLC. All Rights Reserved. Jeannine Pearce Clark, Licensed Mental Health Counselor (LMHC).<!-- TODO: add ", Florida License Number: XXXX" once Jeannine supplies it --></p>
+
+        <p class="foot-links">
+          <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span><a href="disclaimer.html" target="_blank" rel="noopener">Website Disclaimer<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span>Fort Lauderdale, Florida &middot; Telehealth across Florida
+          <!-- TODO: add "Notice of Privacy Practices" link to HIPAA PDF once Jeannine supplies it -->
+        </p>
+      </div>
     </div>
   </footer>
 

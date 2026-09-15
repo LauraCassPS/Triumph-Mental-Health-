@@ -17,11 +17,19 @@
       font-display:swap; src:url('/fonts/source-sans-3.woff2') format('woff2'); }
     @font-face{ font-family:'Raleway'; font-style:normal; font-weight:400 700;
       font-display:swap; src:url('/fonts/raleway.woff2') format('woff2'); }
-    :root{ --plum:#2F0828; --plum2:#5A3550; --mauve:#7D5397; --coral:#F47A82; --paper:#FBF8F9; }
+    :root{ --plum:#2F0828; --plum2:#5A3550; --mauve:#7D5397; --coral:#F47A82; --paper:#FBF8F9;
+      --rose:#F3EEF0; --maxw:1120px; }
     *{ box-sizing:border-box; }
-    body{ margin:0; min-height:100vh; min-height:100dvh; display:flex; align-items:center; justify-content:center;
-      text-align:center; padding:40px 24px; background:var(--paper); color:var(--plum);
+    /* Column layout so the footer sits at the foot of short pages, message stays centred above it. */
+    body{ margin:0; min-height:100vh; min-height:100dvh; display:flex; flex-direction:column;
+      background:var(--paper); color:var(--plum);
       font-family:'Source Sans 3',-apple-system,system-ui,sans-serif; }
+    main{ flex:1 0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; padding:56px 24px; }
+    /* Visually hidden, still read by screen readers (used for "opens in new tab"). */
+    .vh{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
+    a:focus-visible{ outline:3px solid var(--mauve); outline-offset:2px; }
     .eyebrow{ font-family:'Raleway',sans-serif; font-size:12.5px; font-weight:700; letter-spacing:.2em;
       text-transform:uppercase; color:#B4384F; margin:0 0 18px; }
     h1{ font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; font-size:clamp(40px,8vw,68px);
@@ -31,6 +39,32 @@
     a.btn{ font-family:'Raleway',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.14em;
       font-size:15px; background:var(--mauve); color:#fff; text-decoration:none; padding:16px 34px; display:inline-block; }
     a.btn:hover{ background:#6a4485; }
+
+    /* ============ FOOTER (matches home) ============ */
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+    footer{ flex:0 0 auto; background:var(--plum); color:var(--rose); padding:56px 0 40px; text-align:left; }
+    /* This page styles bare <p> for the centred 404 message; undo that inside the footer. */
+    footer p{ max-width:none; margin:0; font-size:inherit; color:inherit; line-height:inherit; }
+    .foot-inner{ display:flex; flex-wrap:wrap; gap:28px; justify-content:space-between; align-items:center; }
+    .foot-brand{ display:flex; align-items:center; gap:12px; }
+    .foot-brand .wm{ font-family:'Cormorant Garamond',serif; font-size:20px; color:#fff; }
+    .foot-brand .wm small{ display:block; font-family:'Source Sans 3',sans-serif; font-size:8.5px; letter-spacing:.24em;
+      text-transform:uppercase; color:#c8b4c2; margin-top:4px; font-weight:600; }
+    .socials{ display:flex; gap:12px; }
+    .socials a{ width:44px; height:44px; border:1px solid rgba(255,255,255,.22); border-radius:0;
+      display:flex; align-items:center; justify-content:center; color:#fff; transition:background .2s, border-color .2s; }
+    .socials a:hover{ background:rgba(255,255,255,.1); border-color:var(--coral); }
+    /* Below the divider: crisis warning, then copyright, then policy links. Stacks on every width. */
+    .foot-bottom{ margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,.12);
+      font-size:13px; color:#c8b4c2; }
+    .foot-bottom a{ color:#c8b4c2; }
+    .foot-crisis{ font-size:14.5px; line-height:1.65; color:#f3e3ea; max-width:92ch;
+      overflow-wrap:break-word; }
+    .foot-crisis strong{ color:#fff; }
+    .foot-crisis a{ color:#fff; font-weight:700; text-decoration:underline; }
+    .foot-copy{ margin-top:20px; line-height:1.6; overflow-wrap:break-word; }
+    .foot-links{ margin-top:8px; line-height:1.6; overflow-wrap:break-word; }
+    .foot-links .sep{ padding:0 6px; color:rgba(255,255,255,.35); }
   </style>
 </head>
 <body>
@@ -40,5 +74,53 @@
     <p>The page you are looking for cannot be found. Let us help you find your way back.</p>
     <a class="btn" href="/">Return home</a>
   </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-inner">
+        <div class="foot-brand">
+          <svg class="mark" width="40" height="30" viewBox="0 0 120 84" role="img" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="fmk" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9B6BFF"/><stop offset=".55" stop-color="#D67ABF"/><stop offset="1" stop-color="#F58E86"/>
+              </linearGradient>
+            </defs>
+            <g fill="none" stroke="url(#fmk)" stroke-width="4" stroke-linejoin="round">
+              <path d="M35 8 L8 74 L62 74 Z"/><path d="M85 8 L58 74 L112 74 Z"/><path d="M60 30 L42 74 L78 74 Z"/>
+            </g>
+          </svg>
+          <span class="wm">Triumph<small>Mental Health Counseling</small></span>
+        </div>
+
+        <div class="socials" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/jeannine-pearce-clark-8a7467246/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21H9z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/triumphmentalhealth/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61575566224590" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.29-.04-1.3-.13-2.46-.13-2.43 0-4.1 1.48-4.1 4.2v2.34H7.7V13h2.74v8z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <p class="foot-crisis"><strong>CRISIS WARNING:</strong> If you are experiencing a life-threatening mental health emergency, please call <a href="tel:911">911</a>, go to the nearest emergency room, or call/text the Suicide &amp; Crisis Lifeline at <a href="tel:988">988</a>. Do not use this website, email, or online contact forms to communicate an emergency. This website is not monitored 24/7.</p>
+
+        <p class="foot-copy">&copy; <span id="yr"></span> Triumph Mental Health Counseling, LLC. All Rights Reserved. Jeannine Pearce Clark, Licensed Mental Health Counselor (LMHC).<!-- TODO: add ", Florida License Number: XXXX" once Jeannine supplies it --></p>
+
+        <p class="foot-links">
+          <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span><a href="/disclaimer.html" target="_blank" rel="noopener">Website Disclaimer<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span>Fort Lauderdale, Florida &middot; Telehealth across Florida
+          <!-- TODO: add "Notice of Privacy Practices" link to HIPAA PDF once Jeannine supplies it -->
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
