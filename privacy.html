@@ -93,9 +93,29 @@
       overflow-wrap:break-word; }
     .foot-crisis strong{ color:#fff; }
     .foot-crisis a{ color:#fff; font-weight:700; text-decoration:underline; }
+    /* 911 and 988 are the most important taps on the site and the text sets them
+       at ~23x21. The pseudo-element grows the touch target to ~44px without
+       changing the line layout around them. */
+    .foot-crisis a{ position:relative; display:inline-block; }
+    .foot-crisis a::after{ content:""; position:absolute; left:-10px; right:-10px;
+      top:50%; transform:translateY(-50%); height:44px; }
     .foot-copy{ margin-top:20px; line-height:1.6; overflow-wrap:break-word; }
-    .foot-links{ margin-top:8px; line-height:1.6; overflow-wrap:break-word; }
-    .foot-links .sep{ padding:0 6px; color:rgba(255,255,255,.35); }
+    /* Real padding, not an invisible overlay: three links sit side by side here,
+       so overlapping hit areas would send taps to the wrong link. The 6px the
+       separator used to carry now lives on the links, so horizontal spacing
+       looks unchanged while each link clears 44px. The address moved to its own
+       line because tall inline-block links and plain text read badly mixed. */
+    .foot-links{ margin-top:4px; line-height:1.45; overflow-wrap:break-word; }
+    .foot-links a{ display:inline-block; padding:13px 6px; }
+    .foot-links .sep{ padding:0; color:rgba(255,255,255,.35); }
+    .foot-address{ margin-top:4px; line-height:1.6; overflow-wrap:break-word; }
+    /* Below this the three links no longer fit on one line, and a wrapped link
+       leaves its separator stranded at the end of the row. Stack them instead:
+       no separators to strand, and each link becomes a full-width tap target. */
+    @media (max-width:560px){
+      .foot-links a{ display:block; padding:13px 0; }
+      .foot-links .sep{ display:none; }
+    }
 
     @media (max-width:560px){ .brand-logo{ height:52px; } }
   </style>
@@ -118,7 +138,7 @@
         <p class="eyebrow">Privacy</p>
         <h1>Privacy Policy</h1>
         <p class="legal-name">Triumph Mental Health Counseling, LLC</p>
-        <p class="updated">Last updated: 15th September 2026</p>
+        <p class="updated">Last updated: 16th September 2026</p>
 
         <p class="intro">This privacy policy explains what information this website collects, how it is used, and the choices you have. It applies to the website at triumphmentalhealth.com. It does not cover the separate client portal and scheduling system (SimplePractice), which has its own privacy notice and its own protections for health information.</p>
 
@@ -126,20 +146,13 @@
         <p>Triumph Mental Health Counseling, LLC is a mental health counseling practice based in Florida. If you have any questions about this policy or about the information we hold, you can contact us at <a href="mailto:jpclark@triumphmentalhealth.com">jpclark@triumphmentalhealth.com</a>.</p>
 
         <h2>The information we collect</h2>
-        <p><strong>Information you give us.</strong> If you fill in the callback form on this website, we collect your name, email address, phone number (optional) and how you would like us to contact you. The form does not ask for health information, and we ask you not to include any. If you would like to become a client or discuss your care, we will move that conversation to a secure channel.</p>
         <p><strong>Information collected automatically.</strong> This website does not use tracking cookies, advertising tools or analytics that identify you. Our hosting provider, Cloudflare, processes basic technical information such as your IP address, browser type, device type and general region to deliver the website and keep it secure. This information is not used to profile you or for advertising.</p>
-
-        <h2>Contact form privacy notice</h2>
-        <p><strong>Important Privacy Notice:</strong> Standard website contact forms and emails are not fully secure or encrypted methods of electronic communication. By using this form, you accept the inherent privacy risks of unencrypted transmission. Please do not submit confidential medical information, clinical symptoms, or sensitive personal history through this form. This form is intended solely for basic scheduling and administrative inquiries.</p>
-
-        <h2>How we use your information</h2>
-        <p>We use the information you send through the callback form only to respond to your request and to arrange next steps if you choose to move forward. We do not sell your information, and we do not use it for advertising or to build a profile of you.</p>
 
         <h2>Booking and client care</h2>
         <p>If you decide to book or become a client, that process happens through SimplePractice, a secure platform designed for healthcare practices. Any health information you share as part of your care is handled under that system's protections and under the practice's clinical privacy obligations, separately from this website.</p>
 
         <h2>How your information is stored and shared</h2>
-        <p>Callback form submissions are handled by Formspree, a form-processing service, which stores your details and sends them to us by email so we can reply. Formspree acts as our service provider and processes this information on our behalf. The website is hosted by Cloudflare. We do not share your information with anyone else except where we are required to by law.</p>
+        <p>The website is hosted by Cloudflare. We do not share your information with anyone else except where we are required to by law.</p>
 
         <h2>Cookies</h2>
         <p>This website does not use advertising or analytics cookies. Our hosting and security provider, Cloudflare, may set strictly necessary cookies to keep the website secure and protect it from misuse. These do not track you across other websites. Because there are no non-essential cookies, there is no cookie banner.</p>
@@ -193,12 +206,13 @@
       <div class="foot-bottom">
         <p class="foot-crisis"><strong>CRISIS WARNING:</strong> If you are experiencing a life-threatening mental health emergency, please call <a href="tel:911">911</a>, go to the nearest emergency room, or call/text the Suicide &amp; Crisis Lifeline at <a href="tel:988">988</a>. Do not use this website, email, or online contact forms to communicate an emergency. This website is not monitored 24/7.</p>
 
-        <p class="foot-copy">&copy; <span id="yr"></span> Triumph Mental Health Counseling, LLC. All Rights Reserved. Jeannine Pearce Clark, Licensed Mental Health Counselor (LMHC).<!-- TODO: add ", Florida License Number: XXXX" once Jeannine supplies it --></p>
+        <p class="foot-copy">&copy; <span id="yr"></span> Triumph Mental Health Counseling, LLC. All Rights Reserved. Jeannine Pearce Clark, Licensed Mental Health Counselor (LMHC), Florida License Number: MH23842.</p>
 
         <p class="foot-links">
-          <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span><a href="disclaimer.html" target="_blank" rel="noopener">Website Disclaimer<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span>Fort Lauderdale, Florida &middot; Telehealth across Florida
-          <!-- TODO: add "Notice of Privacy Practices" link to HIPAA PDF once Jeannine supplies it -->
+          <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span><a href="disclaimer.html" target="_blank" rel="noopener">Website Disclaimer<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span><a href="notice-of-privacy-practices.html" target="_blank" rel="noopener">Notice of Privacy Practices<span class="vh"> (opens in new tab)</span></a>
         </p>
+
+        <p class="foot-address">805 E. Broward Blvd, Suite 301-Q, Fort Lauderdale, FL 33301 &middot; Telehealth across Florida</p>
       </div>
     </div>
   </footer>

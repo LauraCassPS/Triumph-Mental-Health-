@@ -41,7 +41,9 @@
     "image": "https://www.triumphmentalhealth.com/images/triumph-logo.png",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "805 E. Broward Blvd, Suite 301-Q",
       "addressLocality": "Fort Lauderdale",
+      "postalCode": "33301",
       "addressRegion": "FL",
       "addressCountry": "US"
     },
@@ -147,7 +149,7 @@
 
     /* Raleway for labels, nav and buttons (SQSP "Miscellaneous") */
     .eyebrow, .card .tag, .lcol .ct, .panel .pk, .creds .k,
-    .btn, .navlinks a, .field label, .form-note{
+    .btn, .navlinks a{
       font-family:'Raleway','Source Sans 3',sans-serif; }
 
     /* ============ NAV (larger brand) ============ */
@@ -321,68 +323,29 @@
     .creds ul{ margin:0; padding:0; list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; }
     .creds li{ font-size:15px; color:var(--plum); padding-left:22px; position:relative; line-height:1.45; }
     .creds li::before{ content:""; position:absolute; left:0; top:7px; width:8px; height:8px; background:var(--coral); }
-    /* Request Appointment centered underneath the whole About row (photo + credentials) */
-    .about-cta{ margin-top:36px; text-align:center; }
-
     /* ============ REACH OUT (contact) ============ */
     .contact{ background:var(--plum); color:var(--rose); }
-    .contact .grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,60px); align-items:start; }
     .contact .eyebrow{ color:#f7a9af; }
     .contact .eyebrow::before{ background:var(--coral); }
     .contact h2{ font-size:clamp(30px,4.4vw,44px); color:#fff; }
     .contact .serif-i{ color:#f0b8c1; }
     .contact p{ color:#e3cfda; margin-top:18px; line-height:1.7; }
     .contact .meta{ margin-top:24px; font-size:15px; color:#f7a9af; font-weight:600; }
-    form{ background:#fff; border-radius:0; padding:clamp(24px,3.5vw,34px); color:var(--plum); }
-    .field{ margin-bottom:16px; }
-    .field label{ display:block; font-size:13px; font-weight:700; letter-spacing:.02em; margin-bottom:6px; color:var(--plum); }
-    .field input, .field textarea{ width:100%; font-family:inherit; font-size:16px; color:var(--plum);
-      padding:12px 14px; border:1px solid var(--line); border-radius:0; background:var(--paper); }
-    .field textarea{ min-height:120px; resize:vertical; }
-    form .btn{ width:100%; text-align:center; margin-top:6px; }
-    /* These three live inside .contact, whose `p` rule is more specific than a bare
-       class, so they must be scoped or they inherit the pale on-plum text colour
-       and become unreadable on the white form. */
-    .contact .form-note{ font-size:12.5px; color:var(--plum2); margin-top:12px; text-align:center; }
-    /* Helper note under a field */
-    .contact .form-hint{ font-size:12.5px; color:var(--plum2); margin-top:8px; line-height:1.5; }
-    /* Prominent "general enquiry only" warning above the consent row.
-       Scoped under .contact so it beats ".contact p { color:#e3cfda }" (the pale
-       on-plum body colour), which would otherwise wash the text out on the pink box. */
-    .contact .form-warning{ font-size:13px; line-height:1.55; color:var(--plum); background:#FBEFF1;
-      border-left:3px solid var(--rose-ink); padding:12px 14px; margin:4px 0 18px; }
-    .contact .form-warning b{ color:var(--plum); font-weight:700; }
-    /* Preferred contact method (radio pair) */
-    .field-radio fieldset{ border:none; margin:0; padding:0; }
-    .field-radio legend{ font-family:'Raleway','Source Sans 3',sans-serif; font-size:13px; font-weight:700;
-      letter-spacing:.02em; color:var(--plum); padding:0; margin-bottom:8px; }
-    .radio-row{ display:flex; gap:22px; flex-wrap:wrap; }
-    .radio-opt{ display:flex; align-items:center; gap:8px; font-size:15px; color:var(--plum); cursor:pointer; }
-    .radio-opt input[type="radio"]{ width:18px; height:18px; accent-color:var(--mauve); cursor:pointer; }
-    /* Honeypot: hidden from people and assistive tech, still submitted by bots */
-    .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+    /* Contact is a single centred column: everything routes through SimplePractice,
+       so there is no second (form) column for the copy to balance against. */
+    .contact-inner{ max-width:660px; margin:0 auto; text-align:center; }
+    .contact .contact-copy{ margin-top:14px; }
+    .contact h2 + .contact-copy{ margin-top:22px; }
+    .contact .contact-inner .meta{ margin-top:22px; }
+    /* Inline link on the dark plum panel: white + underlined, so it is not colour-alone. */
+    .contact-msg{ color:#fff; font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+    .contact-msg:hover{ color:#f7a9af; }
+    .contact-cta{ margin-top:34px; }
+    /* The global mauve focus ring is only 3:1 on this dark plum panel; coral is 6.7:1. */
+    .contact a:focus-visible{ outline:3px solid var(--coral); outline-offset:3px; }
     /* Visually hidden, still read by screen readers (used for "opens in new tab"). */
     .vh{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
       clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
-    /* Consent checkbox row */
-    .field-consent{ display:flex; align-items:flex-start; gap:10px; }
-    .field-consent input[type="checkbox"]{ width:20px; height:20px; flex:0 0 auto; margin-top:2px;
-      accent-color:var(--mauve); cursor:pointer; }
-    .field-consent label{ margin-bottom:0; font-size:13px; font-weight:600; line-height:1.5;
-      letter-spacing:0; color:var(--plum2); cursor:pointer; }
-    .field-consent label a{ color:var(--mauve-ink); }
-    /* Native invalid state (announced by the browser on submit).
-       :user-invalid, not :invalid -- these fields carry no placeholder, so the old
-       :not(:placeholder-shown) guard was always true and flagged untouched fields. */
-    .field input:user-invalid,
-    .field textarea:user-invalid{ border-color:var(--rose-ink); }
-    /* Submit status message (success / error after sending) */
-    .contact .form-status{ margin-top:14px; padding:12px 14px; font-size:14px; line-height:1.55;
-      border-left:3px solid var(--mauve-ink); background:var(--rose); color:var(--plum); }
-    .contact .form-status.is-error{ border-left-color:var(--rose-ink); }
-    .contact .form-status a{ color:var(--rose-ink); font-weight:700; }
-    /* Disabled submit while sending */
-    form .btn[aria-disabled="true"]{ opacity:.65; pointer-events:none; }
 
     /* ============ INSURANCE ============ */
     .insurance{ text-align:center; }
@@ -402,24 +365,30 @@
     .ins-note{ margin-top:28px; font-size:15px; color:var(--plum2); max-width:82ch; margin-left:auto; margin-right:auto; }
 
     /* Good Faith Estimate: native details/summary, no JavaScript.
-       The section is centred, but the panel body reads left-aligned. */
-    .gfe{ max-width:82ch; margin:14px auto 0; text-align:left; border-bottom:none; }
-    .gfe > summary{ list-style:none; cursor:pointer; display:flex; align-items:center; gap:10px;
-      min-height:44px; padding:10px 2px; font-family:'Source Sans 3',sans-serif;
-      font-size:15px; font-weight:600; color:var(--mauve-ink); text-decoration:underline;
-      text-underline-offset:3px; }
+       Boxed to match .ins-box above it. The trigger row is centred; the panel
+       body reads left-aligned because it is long-form legal copy. */
+    .gfe{ max-width:940px; margin:28px auto 0; text-align:left; border-bottom:none;
+      background:#fff; border:1px solid var(--line); padding:clamp(6px,1.2vw,10px) clamp(20px,3vw,34px); }
+    .gfe > summary{ list-style:none; cursor:pointer; display:flex; align-items:center;
+      justify-content:center; gap:12px; min-height:44px; padding:14px 2px;
+      font-family:'Source Sans 3',sans-serif; font-size:16px; font-weight:700;
+      color:var(--mauve-ink); text-decoration:none; text-align:center; }
     .gfe > summary::-webkit-details-marker{ display:none; }
     /* The FAQ accordion sets details summary::after and details[open] summary::after;
        both are cancelled here so the GFE panel uses its own boxed indicator. */
     .gfe > summary::after, .gfe[open] > summary::after{ content:none; }
-    /* Open/close indicator: a shape change, not colour alone. */
-    .gfe > summary .gfe-ind{ flex:0 0 auto; width:22px; height:22px; border:1px solid var(--line);
-      display:inline-flex; align-items:center; justify-content:center; font-size:16px; line-height:1;
-      font-weight:400; color:var(--rose-ink); text-decoration:none; }
-    .gfe > summary .gfe-ind::before{ content:"+"; }
-    .gfe[open] > summary .gfe-ind::before{ content:"\2013"; }
+    /* Open/close indicator: a chevron that flips, so the state is a shape and
+       orientation change, never colour alone. */
+    .gfe > summary .gfe-ind{ flex:0 0 auto; width:26px; height:26px; border:1px solid var(--line);
+      display:inline-flex; align-items:center; justify-content:center; color:var(--rose-ink);
+      transition:transform .2s ease, border-color .2s ease, background .2s ease; }
+    .gfe > summary .gfe-ind svg{ display:block; }
+    .gfe[open] > summary .gfe-ind{ transform:rotate(180deg); }
     .gfe > summary:hover{ color:var(--rose-ink); }
-    .gfe-panel{ padding:6px 2px 18px; }
+    .gfe > summary:hover .gfe-ind{ border-color:var(--coral); background:var(--rose); }
+    @media (prefers-reduced-motion: reduce){ .gfe > summary .gfe-ind{ transition:none; } }
+    .gfe-panel{ border-top:1px solid var(--line); }
+    .gfe-panel{ padding:20px 2px 22px; }
     .gfe-panel p{ font-size:15px; line-height:1.75; color:var(--plum2); }
     .gfe-panel p + p, .gfe-panel ul + p{ margin-top:14px; }
     .gfe-panel ul{ margin:14px 0 0; padding-left:20px; font-size:15px; line-height:1.75; color:var(--plum2); }
@@ -469,21 +438,35 @@
       overflow-wrap:break-word; }
     .foot-crisis strong{ color:#fff; }
     .foot-crisis a{ color:#fff; font-weight:700; text-decoration:underline; }
+    /* 911 and 988 are the most important taps on the site and the text sets them
+       at ~23x21. The pseudo-element grows the touch target to ~44px without
+       changing the line layout around them. */
+    .foot-crisis a{ position:relative; display:inline-block; }
+    .foot-crisis a::after{ content:""; position:absolute; left:-10px; right:-10px;
+      top:50%; transform:translateY(-50%); height:44px; }
     .foot-copy{ margin-top:20px; line-height:1.6; overflow-wrap:break-word; }
-    .foot-links{ margin-top:8px; line-height:1.6; overflow-wrap:break-word; }
-    .foot-links .sep{ padding:0 6px; color:rgba(255,255,255,.35); }
+    /* Real padding, not an invisible overlay: three links sit side by side here,
+       so overlapping hit areas would send taps to the wrong link. The 6px the
+       separator used to carry now lives on the links, so horizontal spacing
+       looks unchanged while each link clears 44px. The address moved to its own
+       line because tall inline-block links and plain text read badly mixed. */
+    .foot-links{ margin-top:4px; line-height:1.45; overflow-wrap:break-word; }
+    .foot-links a{ display:inline-block; padding:13px 6px; }
+    .foot-links .sep{ padding:0; color:rgba(255,255,255,.35); }
+    .foot-address{ margin-top:4px; line-height:1.6; overflow-wrap:break-word; }
+    /* Below this the three links no longer fit on one line, and a wrapped link
+       leaves its separator stranded at the end of the row. Stack them instead:
+       no separators to strand, and each link becomes a full-width tap target. */
+    @media (max-width:560px){
+      .foot-links a{ display:block; padding:13px 0; }
+      .foot-links .sep{ display:none; }
+    }
 
-    /* Crisis notice beside the contact form (on the dark plum section) */
-    .crisis-note{ margin-top:24px; padding:16px 20px; border:1px solid rgba(247,169,175,.38);
-      border-left:4px solid var(--coral); background:rgba(255,255,255,.06);
-      font-size:14.5px; line-height:1.6; color:#f3e3ea; }
-    .crisis-note strong{ color:#fff; }
-    .crisis-note a{ color:#fff; font-weight:700; text-decoration:underline; }
 
     /* ============ RESPONSIVE ============ */
     @media (max-width:900px){
       .hero .overlay{ background:linear-gradient(180deg, rgba(242,237,240,.55) 0%, rgba(242,237,240,.66) 45%, rgba(242,237,240,.93) 100%); }
-      .who-grid, .focus-top, .about .grid, .contact .grid, .faq-grid{ grid-template-columns:1fr; }
+      .who-grid, .focus-top, .about .grid, .faq-grid{ grid-template-columns:1fr; }
       .who-photo .photo-ph, .focus-photo .photo-ph, .about .photo-ph{ min-height:0; aspect-ratio:4/5; }
       .photo-ph{ max-width:460px; }
       .tags{ grid-template-columns:repeat(3,1fr); }
@@ -544,7 +527,7 @@
         <a href="#focus">Areas of Focus</a>
         <a href="#about">About</a>
         <a href="#faq">FAQ</a>
-        <a href="#contact" class="btn btn-contact">Contact</a>
+        <a href="https://jeannine-clark.clientsecure.me" class="btn btn-contact" target="_blank" rel="noopener">Book a Consultation<span class="vh"> (opens in new tab)</span></a>
       </nav>
     </div>
   </header>
@@ -652,7 +635,7 @@
           </div>
 
           <div class="later-cta">
-            <a href="https://jeannine-clark.clientsecure.me" class="btn btn-solid" target="_blank" rel="noopener">Request Appointment</a>
+            <a href="https://jeannine-clark.clientsecure.me" class="btn btn-solid" target="_blank" rel="noopener">Request Appointment<span class="vh"> (opens in new tab)</span></a>
           </div>
         </div>
       </div>
@@ -767,72 +750,23 @@
             </div>
           </div>
         </div>
-        <div class="about-cta">
-          <a href="https://jeannine-clark.clientsecure.me" class="btn btn-solid" target="_blank" rel="noopener">Request Appointment</a>
-        </div>
       </div>
     </section>
 
     <!-- ============ REACH OUT (contact) ============ -->
+    <!-- All contact routes through SimplePractice. No form, no PHI collected here. -->
     <section class="contact sec" id="contact">
       <div class="wrap">
-        <div class="grid">
-          <div>
-            <p class="eyebrow">Reach Out Today</p>
-            <h2>Your journey to <span class="serif-i">healing</span> starts here.</h2>
-            <p>Request a callback and Jeannine will reply within two business days to arrange a brief initial consultation.</p>
-            <p class="meta">In-person and telehealth psychotherapy available.</p>
-            <div class="crisis-note" role="note">
-              <strong>This website is not for emergencies.</strong> If you are in crisis or thinking about harming yourself, call or text <a href="tel:988">988</a> (Suicide &amp; Crisis Lifeline) or call <a href="tel:911">911</a>.
-            </div>
-          </div>
-          <div>
-            <!-- FORM: posts to Formspree. Submits via fetch so the visitor stays on the page;
-                 with JavaScript off it falls back to a normal POST and Formspree's own thank-you page. -->
-            <form id="contactForm" action="https://formspree.io/f/xzebwlyr" method="POST" aria-label="Contact Jeannine">
-              <input type="hidden" name="_subject" value="New enquiry from triumphmentalhealth.com">
-              <div class="field">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" autocomplete="name" required>
-              </div>
-              <div class="field">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" autocomplete="email" required>
-              </div>
-              <div class="field">
-                <label for="phone">Phone (optional)</label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel">
-              </div>
-              <div class="field field-radio">
-                <fieldset>
-                  <legend>Preferred contact method</legend>
-                  <div class="radio-row">
-                    <label class="radio-opt"><input type="radio" name="preferred_contact" value="Email" checked> Email</label>
-                    <label class="radio-opt"><input type="radio" name="preferred_contact" value="Phone"> Phone</label>
-                  </div>
-                </fieldset>
-              </div>
-
-              <!-- Honeypot spam trap (Formspree). Hidden from people and screen readers; bots fill it and get rejected. -->
-              <div class="hp" aria-hidden="true">
-                <label for="company">Company (leave blank)</label>
-                <input type="text" id="company" name="_gotcha" tabindex="-1" autocomplete="off">
-              </div>
-
-              <!-- Client-supplied Important Privacy Notice. Sits above the consent checkbox and submit button. -->
-              <p class="form-warning"><b>Important Privacy Notice:</b> Standard website contact forms and emails are not fully secure or encrypted methods of electronic communication. By using this form, you accept the inherent privacy risks of unencrypted transmission. Please do not submit confidential medical information, clinical symptoms, or sensitive personal history through this form. This form is intended solely for basic scheduling and administrative inquiries.</p>
-
-              <div class="field field-consent">
-                <input type="checkbox" id="consent" name="consent" value="yes" required>
-                <label for="consent">I understand that this is a general enquiry form and should not be used to send confidential or health information. See the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>.</label>
-              </div>
-
-              <button type="submit" class="btn btn-solid" id="contactSubmit">Request a callback</button>
-
-              <!-- Submission status. Announced to screen readers; hidden until there is something to say. -->
-              <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
-            </form>
-          </div>
+        <div class="contact-inner">
+          <p class="eyebrow center">Reach Out Today</p>
+          <h2>Your journey to <span class="serif-i">healing</span> starts here.</h2>
+          <p class="contact-copy">Book a free 15-minute consultation to see if Jeannine is the right fit, or go straight to requesting your first session.</p>
+          <p class="contact-copy">Have a question first? <a class="contact-msg" href="https://jeannine-clark.clientsecure.me" target="_blank" rel="noopener">Send a message<span class="vh"> (opens in new tab)</span></a></p>
+          <p class="contact-copy">Everything is handled securely through SimplePractice.</p>
+          <p class="meta">In-person and telehealth psychotherapy available.</p>
+          <p class="contact-cta">
+            <a href="https://jeannine-clark.clientsecure.me" class="btn btn-solid btn-upper" target="_blank" rel="noopener">Book a free consultation<span class="vh"> (opens in new tab)</span></a>
+          </p>
         </div>
       </div>
     </section>
@@ -859,7 +793,7 @@
 
         <!-- Good Faith Estimate (No Surprises Act). Native details/summary: works without JavaScript. -->
         <details class="gfe">
-          <summary><span class="gfe-ind" aria-hidden="true"></span>Your right to a Good Faith Estimate</summary>
+          <summary>Your right to a Good Faith Estimate<span class="gfe-ind" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
           <div class="gfe-panel">
             <!-- Visually hidden: the summary above says the same thing. Kept so the heading order stays intact for screen readers. -->
             <h3 class="vh">YOUR RIGHT TO A GOOD FAITH ESTIMATE</h3>
@@ -919,7 +853,7 @@
           </details>
           <details>
             <summary>How do I schedule a first appointment?</summary>
-            <div class="answer">Use the general enquiry form to request a callback, or use the 'Request Appointment' button to continue securely through SimplePractice. I'll reply within two business days to arrange a brief initial consultation, a chance to hear about your situation, answer your questions, and decide together whether to book a first full session. Please do not include health or clinical information in the general enquiry form.</div>
+            <div class="answer">Use the 'Request Appointment' or 'Book a free consultation' button to continue securely through SimplePractice. You can book a free 15-minute consultation, a chance to ask questions and decide together whether to book a first full session.</div>
           </details>
           </div>
         </div>
@@ -961,12 +895,13 @@
       <div class="foot-bottom">
         <p class="foot-crisis"><strong>CRISIS WARNING:</strong> If you are experiencing a life-threatening mental health emergency, please call <a href="tel:911">911</a>, go to the nearest emergency room, or call/text the Suicide &amp; Crisis Lifeline at <a href="tel:988">988</a>. Do not use this website, email, or online contact forms to communicate an emergency. This website is not monitored 24/7.</p>
 
-        <p class="foot-copy">&copy; <span id="yr"></span> Triumph Mental Health Counseling, LLC. All Rights Reserved. Jeannine Pearce Clark, Licensed Mental Health Counselor (LMHC).<!-- TODO: add ", Florida License Number: XXXX" once Jeannine supplies it --></p>
+        <p class="foot-copy">&copy; <span id="yr"></span> Triumph Mental Health Counseling, LLC. All Rights Reserved. Jeannine Pearce Clark, Licensed Mental Health Counselor (LMHC), Florida License Number: MH23842.</p>
 
         <p class="foot-links">
-          <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span><a href="disclaimer.html" target="_blank" rel="noopener">Website Disclaimer<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span>Fort Lauderdale, Florida &middot; Telehealth across Florida
-          <!-- TODO: add "Notice of Privacy Practices" link to HIPAA PDF once Jeannine supplies it -->
+          <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span><a href="disclaimer.html" target="_blank" rel="noopener">Website Disclaimer<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span><a href="notice-of-privacy-practices.html" target="_blank" rel="noopener">Notice of Privacy Practices<span class="vh"> (opens in new tab)</span></a>
         </p>
+
+        <p class="foot-address">805 E. Broward Blvd, Suite 301-Q, Fort Lauderdale, FL 33301 &middot; Telehealth across Florida</p>
       </div>
     </div>
   </footer>
@@ -991,56 +926,6 @@
       function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 120); }
       onScroll();
       window.addEventListener('scroll', onScroll, { passive:true });
-    })();
-    // Contact form: submit to Formspree in the background so the visitor stays on the page.
-    // Without JavaScript the form still POSTs normally and Formspree shows its own confirmation.
-    (function(){
-      var form = document.getElementById('contactForm');
-      if(!form || !window.fetch) return;
-      var status = document.getElementById('formStatus');
-      var btn = document.getElementById('contactSubmit');
-      var label = btn ? btn.textContent : 'Request a callback';
-      // Static, trusted string; the SimplePractice link is set via innerHTML for the error case only.
-      var FALLBACK = 'Sorry, your request could not be sent. Please try again, or <a href="https://jeannine-clark.clientsecure.me" target="_blank" rel="noopener">request an appointment securely through SimplePractice</a>.';
-      var sending = false;
-
-      function say(msg, isError){
-        if(isError){ status.innerHTML = msg; } else { status.textContent = msg; }
-        status.classList.toggle('is-error', !!isError);
-        status.hidden = false;
-      }
-
-      form.addEventListener('submit', function(e){
-        if(!form.checkValidity()) return; // let the browser show its own messages
-        e.preventDefault();
-        // aria-disabled stops pointer clicks but not Enter, so guard against double sends.
-        if(sending) return;
-        sending = true;
-        status.hidden = true;
-        btn.setAttribute('aria-disabled','true');
-        btn.textContent = 'Sending...';
-
-        fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        }).then(function(res){
-          if(res.ok){
-            form.reset();
-            say('Thank you. Your callback request has been sent. Jeannine will reply within two business days.');
-          } else {
-            // Formspree's own errors are technical ("Form not found"), so show a
-            // message the visitor can actually act on instead.
-            say(FALLBACK, true);
-          }
-        }).catch(function(){
-          say(FALLBACK, true);
-        }).then(function(){
-          sending = false;
-          btn.removeAttribute('aria-disabled');
-          btn.textContent = label;
-        });
-      });
     })();
     // Back-to-top button: show after scrolling, smooth-scroll to top
     (function(){

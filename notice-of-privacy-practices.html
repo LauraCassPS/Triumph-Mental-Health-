@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notice of Privacy Practices | Triumph Mental Health Counseling</title>
+  <meta name="description" content="The HIPAA Notice of Privacy Practices for Triumph Mental Health Counseling. How your protected health information may be used and disclosed, and your rights regarding that information.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.triumphmentalhealth.com/notice-of-privacy-practices">
+  <link rel="icon" href="mental-health-triumph-favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Fonts are self-hosted (see @font-face). No third-party font requests. -->
+  <link rel="preload" href="fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    /* ---------- Self-hosted fonts (no third-party requests; latin woff2) ---------- */
+    @font-face{ font-family:'Cormorant Garamond'; font-style:normal; font-weight:400 500;
+      font-display:swap; src:url('fonts/cormorant-garamond.woff2') format('woff2'); }
+    @font-face{ font-family:'Cormorant Garamond'; font-style:italic; font-weight:500;
+      font-display:swap; src:url('fonts/cormorant-garamond-italic.woff2') format('woff2'); }
+    @font-face{ font-family:'Source Sans 3'; font-style:normal; font-weight:400 700;
+      font-display:swap; src:url('fonts/source-sans-3.woff2') format('woff2'); }
+    @font-face{ font-family:'Raleway'; font-style:normal; font-weight:400 700;
+      font-display:swap; src:url('fonts/raleway.woff2') format('woff2'); }
+
+    :root{
+      --plum:#2F0828; --plum2:#5A3550; --mauve:#7D5397; --mauve-ink:#6A4084;
+      --coral:#F47A82; --rose-ink:#B4384F; --rose:#F3EEF0; --paper:#FBF8F9;
+      --line:rgba(47,8,40,.14); --maxw:1120px;
+    }
+    *{ box-sizing:border-box; }
+    html{ -webkit-text-size-adjust:100%; }
+    body{ margin:0; background:var(--paper); color:var(--plum);
+      font-family:'Source Sans 3',-apple-system,system-ui,Segoe UI,sans-serif;
+      font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+    h1,h2{ font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; margin:0; line-height:1.12; color:var(--plum); }
+    p{ margin:0; }
+    a{ color:var(--mauve-ink); }
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+    /* Visually hidden, still read by screen readers (used for "opens in new tab"). */
+    .vh{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
+    .skip{ position:absolute; left:-9999px; top:0; background:var(--plum); color:#fff; padding:12px 18px; z-index:200; }
+    .skip:focus{ left:0; }
+    a:focus-visible, .brand:focus-visible{ outline:3px solid var(--mauve); outline-offset:2px; }
+
+    /* header */
+    .nav{ background:var(--paper); border-bottom:1px solid var(--line); }
+    .nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:18px;
+      max-width:var(--maxw); margin:0 auto; padding:14px 24px; }
+    .brand{ display:flex; align-items:center; text-decoration:none; }
+    .brand-logo{ height:62px; width:auto; display:block; }
+    .back-link{ font-family:'Raleway','Source Sans 3',sans-serif; font-size:15px; font-weight:600;
+      color:var(--plum2); text-decoration:none; }
+    .back-link:hover{ color:var(--rose-ink); }
+
+    /* content */
+    main{ padding:clamp(48px,7vw,88px) 0 clamp(56px,8vw,96px); }
+    .doc{ max-width:72ch; }
+    .eyebrow{ font-family:'Raleway','Source Sans 3',sans-serif; font-size:12.5px; font-weight:700;
+      letter-spacing:.2em; text-transform:uppercase; color:var(--rose-ink); margin:0 0 14px;
+      display:flex; align-items:center; gap:14px; }
+    .eyebrow::before{ content:""; width:38px; height:2px; background:var(--coral); display:block; flex:0 0 auto; }
+    h1{ font-size:clamp(34px,5vw,52px); letter-spacing:-.01em; }
+    .legal-name{ font-size:17px; color:var(--plum2); margin-top:14px; font-weight:600; }
+    .updated{ font-size:15px; color:var(--plum2); margin-top:4px; }
+    .intro{ font-size:clamp(17px,2vw,19px); color:var(--plum2); margin-top:26px; }
+    h2{ font-size:clamp(22px,3vw,28px); color:var(--mauve); margin:40px 0 12px; }
+    .doc p + p{ margin-top:16px; color:var(--plum2); }
+    .doc p{ color:var(--plum2); }
+    .doc p strong{ color:var(--plum); font-weight:700; }
+    hr{ border:none; border-top:1px solid var(--line); margin:26px 0; }
+
+    /* Lists: the notice is mostly numbered and lettered clauses. */
+    .doc ul, .doc ol{ color:var(--plum2); margin:16px 0 0; padding-left:26px; }
+    .doc li{ margin-top:10px; }
+    .doc li > ol{ margin-top:10px; margin-bottom:4px; }
+    .doc li::marker{ color:var(--rose-ink); }
+    /* The all-caps summary HIPAA requires to be displayed prominently. */
+    .doc .banner{ margin-top:26px; padding:18px 22px; background:var(--rose);
+      border-left:4px solid var(--coral); font-weight:700; color:var(--plum); line-height:1.55; }
+    .doc .lede{ margin-top:22px; }
+
+    /* footer (matches home) */
+    footer{ background:var(--plum); color:var(--rose); padding:56px 0 40px; }
+    .foot-inner{ display:flex; flex-wrap:wrap; gap:28px; justify-content:space-between; align-items:center; }
+    .foot-brand{ display:flex; align-items:center; gap:12px; }
+    .foot-brand .wm{ font-family:'Cormorant Garamond',serif; font-size:20px; color:#fff; }
+    .foot-brand .wm small{ display:block; font-family:'Source Sans 3',sans-serif; font-size:8.5px; letter-spacing:.24em;
+      text-transform:uppercase; color:#c8b4c2; margin-top:4px; font-weight:600; }
+    .socials{ display:flex; gap:12px; }
+    .socials a{ width:44px; height:44px; border:1px solid rgba(255,255,255,.22); border-radius:0;
+      display:flex; align-items:center; justify-content:center; color:#fff; transition:background .2s, border-color .2s; }
+    .socials a:hover{ background:rgba(255,255,255,.1); border-color:var(--coral); }
+    /* Below the divider: crisis warning, then copyright, then policy links. Stacks on every width. */
+    .foot-bottom{ margin-top:36px; padding-top:22px; border-top:1px solid rgba(255,255,255,.12);
+      font-size:13px; color:#c8b4c2; }
+    .foot-bottom a{ color:#c8b4c2; }
+    .foot-crisis{ font-size:14.5px; line-height:1.65; color:#f3e3ea; max-width:92ch;
+      overflow-wrap:break-word; }
+    .foot-crisis strong{ color:#fff; }
+    .foot-crisis a{ color:#fff; font-weight:700; text-decoration:underline; }
+    /* 911 and 988 are the most important taps on the site and the text sets them
+       at ~23x21. The pseudo-element grows the touch target to ~44px without
+       changing the line layout around them. */
+    .foot-crisis a{ position:relative; display:inline-block; }
+    .foot-crisis a::after{ content:""; position:absolute; left:-10px; right:-10px;
+      top:50%; transform:translateY(-50%); height:44px; }
+    .foot-copy{ margin-top:20px; line-height:1.6; overflow-wrap:break-word; }
+    /* Real padding, not an invisible overlay: three links sit side by side here,
+       so overlapping hit areas would send taps to the wrong link. The 6px the
+       separator used to carry now lives on the links, so horizontal spacing
+       looks unchanged while each link clears 44px. The address moved to its own
+       line because tall inline-block links and plain text read badly mixed. */
+    .foot-links{ margin-top:4px; line-height:1.45; overflow-wrap:break-word; }
+    .foot-links a{ display:inline-block; padding:13px 6px; }
+    .foot-links .sep{ padding:0; color:rgba(255,255,255,.35); }
+    .foot-address{ margin-top:4px; line-height:1.6; overflow-wrap:break-word; }
+    /* Below this the three links no longer fit on one line, and a wrapped link
+       leaves its separator stranded at the end of the row. Stack them instead:
+       no separators to strand, and each link becomes a full-width tap target. */
+    @media (max-width:560px){
+      .foot-links a{ display:block; padding:13px 0; }
+      .foot-links .sep{ display:none; }
+    }
+
+    @media (max-width:560px){ .brand-logo{ height:52px; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Triumph Mental Health Counseling home">
+        <img class="brand-logo" src="images/triumph-logo.png" width="1280" height="511" alt="Triumph Mental Health Counseling. Find your path to the summit.">
+      </a>
+      <a class="back-link" href="index.html">&larr; Back to site</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <article class="doc">
+        <p class="eyebrow">Legal</p>
+        <h1>Notice of Privacy Practices</h1>
+        <p class="legal-name">Triumph Mental Health Counseling</p>
+        <p class="updated"><strong>Effective date of this notice:</strong> this notice went into effect on 01/01/2025.</p>
+
+        <p class="banner">THIS NOTICE DESCRIBES HOW HEALTH INFORMATION MAY BE USED AND DISCLOSED AND HOW YOU CAN GET ACCESS TO THIS INFORMATION. PLEASE REVIEW IT CAREFULLY.</p>
+
+        <h2>I. My Pledge Regarding Health Information</h2>
+        <p>I understand that health information about you and your health care is personal. I am committed to protecting health information about you. I create a record of the care and services you receive from me. I need this record to provide you with quality care and to comply with certain legal requirements. This notice applies to all of the records of your care generated by this mental health care practice. This notice will tell you about the ways in which I may use and disclose health information about you. I also describe your rights to the health information I keep about you, and describe certain obligations I have regarding the use and disclosure of your health information. I am required by law to:</p>
+        <ul>
+          <li>Make sure that protected health information ("PHI") that identifies you is kept private.</li>
+          <li>Give you this notice of my legal duties and privacy practices with respect to health information.</li>
+          <li>Follow the terms of the notice that is currently in effect.</li>
+          <li>I can change the terms of this Notice, and such changes will apply to all information I have about you. The new Notice will be available upon request, in my office, and on my website.</li>
+        </ul>
+
+        <h2>II. How I May Use and Disclose Health Information About You</h2>
+        <p>The following categories describe different ways that I use and disclose health information. For each category of uses or disclosures I will explain what I mean and try to give some examples. Not every use or disclosure in a category will be listed. However, all of the ways I am permitted to use and disclose information will fall within one of the categories.</p>
+        <p><strong>For Treatment Payment, or Health Care Operations:</strong> Federal privacy rules (regulations) allow health care providers who have direct treatment relationship with the patient/client to use or disclose the patient/client's personal health information without the patient's written authorization, to carry out the health care provider's own treatment, payment or health care operations. I may also disclose your protected health information for the treatment activities of any health care provider. This too can be done without your written authorization. For example, if a clinician were to consult with another licensed health care provider about your condition, we would be permitted to use and disclose your personal health information, which is otherwise confidential, in order to assist the clinician in diagnosis and treatment of your mental health condition.</p>
+        <p>Disclosures for treatment purposes are not limited to the minimum necessary standard. Because therapists and other health care providers need access to the full record and/or full and complete information in order to provide quality care. The word "treatment" includes, among other things, the coordination and management of health care providers with a third party, consultations between health care providers and referrals of a patient for health care from one health care provider to another.</p>
+        <p><strong>Lawsuits and Disputes:</strong> If you are involved in a lawsuit, I may disclose health information in response to a court or administrative order. I may also disclose health information about your child in response to a subpoena, discovery request, or other lawful process by someone else involved in the dispute, but only if efforts have been made to tell you about the request or to obtain an order protecting the information requested.</p>
+
+        <h2>III. Certain Uses and Disclosures Require Your Authorization</h2>
+        <ol>
+          <li>Psychotherapy Notes. I do keep "psychotherapy notes" as that term is defined in 45 CFR &sect; 164.501, and any use or disclosure of such notes requires your Authorization unless the use or disclosure is:
+            <ol type="a">
+              <li>For my use in treating you.</li>
+              <li>For my use in training or supervising mental health practitioners to help them improve their skills in group, joint, family, or individual counseling or therapy.</li>
+              <li>For my use in defending myself in legal proceedings instituted by you.</li>
+              <li>For use by the Secretary of Health and Human Services to investigate my compliance with HIPAA.</li>
+              <li>Required by law and the use or disclosure is limited to the requirements of such law.</li>
+              <li>Required by law for certain health oversight activities pertaining to the originator of the psychotherapy notes.</li>
+              <li>Required by a coroner who is performing duties authorized by law.</li>
+              <li>Required to help avert a serious threat to the health and safety of others.</li>
+            </ol>
+          </li>
+          <li>Marketing Purposes. As a psychotherapist, I will not use or disclose your PHI for marketing purposes.</li>
+          <li>Sale of PHI. As a psychotherapist, I will not sell your PHI in the regular course of my business.</li>
+        </ol>
+
+        <h2>IV. Certain Uses and Disclosures Do Not Require Your Authorization</h2>
+        <p>Subject to certain limitations in the law, I can use and disclose your PHI without your Authorization for the following reasons:</p>
+        <ol>
+          <li>When disclosure is required by state or federal law, and the use or disclosure complies with and is limited to the relevant requirements of such law.</li>
+          <li>For public health activities, including reporting suspected child, elder, or dependent adult abuse, or preventing or reducing a serious threat to anyone's health or safety.</li>
+          <li>For health oversight activities, including audits and investigations.</li>
+          <li>For judicial and administrative proceedings, including responding to a court or administrative order, although my preference is to obtain an Authorization from you before doing so.</li>
+          <li>For law enforcement purposes, including reporting crimes occurring on my premises.</li>
+          <li>To coroners or medical examiners, when such individuals are performing duties authorized by law.</li>
+          <li>For research purposes, including studying and comparing the mental health of patients who received one form of therapy versus those who received another form of therapy for the same condition.</li>
+          <li>Specialized government functions, including, ensuring the proper execution of military missions; protecting the President of the United States; conducting intelligence or counter-intelligence operations; or, helping to ensure the safety of those working within or housed in correctional institutions.</li>
+          <li>For workers' compensation purposes. Although my preference is to obtain an Authorization from you, I may provide your PHI in order to comply with workers' compensation laws.</li>
+          <li>Appointment reminders and health related benefits or services. I may use and disclose your PHI to contact you to remind you that you have an appointment with me. I may also use and disclose your PHI to tell you about treatment alternatives, or other health care services or benefits that I offer.</li>
+        </ol>
+
+        <h2>V. Certain Uses and Disclosures Require You to Have the Opportunity to Object</h2>
+        <ol>
+          <li>Disclosures to family, friends, or others. I may provide your PHI to a family member, friend, or other person that you indicate is involved in your care or the payment for your health care, unless you object in whole or in part. The opportunity to consent may be obtained retroactively in emergency situations.</li>
+        </ol>
+
+        <h2>VI. You Have the Following Rights With Respect to Your PHI</h2>
+        <ol>
+          <li>The Right to Request Limits on Uses and Disclosures of Your PHI. You have the right to ask me not to use or disclose certain PHI for treatment, payment, or health care operations purposes. I am not required to agree to your request, and I may say "no" if I believe it would affect your health care.</li>
+          <li>The Right to Request Restrictions for Out-of-Pocket Expenses Paid for In Full. You have the right to request restrictions on disclosures of your PHI to health plans for payment or health care operations purposes if the PHI pertains solely to a health care item or a health care service that you have paid for out-of-pocket in full.</li>
+          <li>The Right to Choose How I Send PHI to You. You have the right to ask me to contact you in a specific way (for example, home or office phone) or to send mail to a different address, and I will agree to all reasonable requests.</li>
+          <li>The Right to See and Get Copies of Your PHI. Other than "psychotherapy notes," you have the right to get an electronic or paper copy of your medical record and other information that I have about you. I will provide you with a copy of your record, or a summary of it, if you agree to receive a summary, within 30 days of receiving your written request, and I may charge a reasonable, cost based fee for doing so.</li>
+          <li>The Right to Get a List of the Disclosures I Have Made. You have the right to request a list of instances in which I have disclosed your PHI for purposes other than treatment, payment, or health care operations, or for which you provided me with an Authorization. I will respond to your request for an accounting of disclosures within 60 days of receiving your request. The list I will give you will include disclosures made in the last six years unless you request a shorter time. I will provide the list to you at no charge, but if you make more than one request in the same year, I will charge you a reasonable cost based fee for each additional request.</li>
+          <li>The Right to Correct or Update Your PHI. If you believe that there is a mistake in your PHI, or that a piece of important information is missing from your PHI, you have the right to request that I correct the existing information or add the missing information. I may say "no" to your request, but I will tell you why in writing within 60 days of receiving your request.</li>
+          <li>The Right to Get a Paper or Electronic Copy of this Notice. You have the right get a paper copy of this Notice, and you have the right to get a copy of this notice by e-mail. And, even if you have agreed to receive this Notice via e-mail, you also have the right to request a paper copy of it.</li>
+        </ol>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-inner">
+        <div class="foot-brand">
+          <svg class="mark" width="40" height="30" viewBox="0 0 120 84" role="img" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="fmk" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9B6BFF"/><stop offset=".55" stop-color="#D67ABF"/><stop offset="1" stop-color="#F58E86"/>
+              </linearGradient>
+            </defs>
+            <g fill="none" stroke="url(#fmk)" stroke-width="4" stroke-linejoin="round">
+              <path d="M35 8 L8 74 L62 74 Z"/><path d="M85 8 L58 74 L112 74 Z"/><path d="M60 30 L42 74 L78 74 Z"/>
+            </g>
+          </svg>
+          <span class="wm">Triumph<small>Mental Health Counseling</small></span>
+        </div>
+
+        <div class="socials" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/jeannine-pearce-clark-8a7467246/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21H9z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/triumphmentalhealth/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61575566224590" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.29-.04-1.3-.13-2.46-.13-2.43 0-4.1 1.48-4.1 4.2v2.34H7.7V13h2.74v8z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <p class="foot-crisis"><strong>CRISIS WARNING:</strong> If you are experiencing a life-threatening mental health emergency, please call <a href="tel:911">911</a>, go to the nearest emergency room, or call/text the Suicide &amp; Crisis Lifeline at <a href="tel:988">988</a>. Do not use this website, email, or online contact forms to communicate an emergency. This website is not monitored 24/7.</p>
+
+        <p class="foot-copy">&copy; <span id="yr"></span> Triumph Mental Health Counseling, LLC. All Rights Reserved. Jeannine Pearce Clark, Licensed Mental Health Counselor (LMHC), Florida License Number: MH23842.</p>
+
+        <p class="foot-links">
+          <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span><a href="disclaimer.html" target="_blank" rel="noopener">Website Disclaimer<span class="vh"> (opens in new tab)</span></a><span class="sep" aria-hidden="true">|</span><a href="notice-of-privacy-practices.html" target="_blank" rel="noopener">Notice of Privacy Practices<span class="vh"> (opens in new tab)</span></a>
+        </p>
+
+        <p class="foot-address">805 E. Broward Blvd, Suite 301-Q, Fort Lauderdale, FL 33301 &middot; Telehealth across Florida</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
