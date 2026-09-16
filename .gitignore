@@ -16,6 +16,11 @@ CLINICAL-SUPERVISION-BUILD-NOTES.md
 DNS-BACKUP-*.md
 WEBSITE-BUILD-SUMMARY.md
 Triumph-Website-Build-Summary.pdf
+# Draft client email plus private notes; the repo is public
+CLIENT-EMAIL-legal-disclosures.md
+# Source scan of the NPP. Superseded by notice-of-privacy-practices.html, and
+# its last page is Jeannine's DOH licence record, so it stays off GitHub.
+notice-of-privacy-practices.pdf
 
 # Superseded insurance-logo originals (trimmed versions live in images/ins/)
 images/logo-*
